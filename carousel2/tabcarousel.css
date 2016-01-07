@@ -1,0 +1,19 @@
+.tabCarousel {width:680px;margin:0 auto;}
+.tabCarousel .tablistGroup {width:200px;text-align:center;margin:20px auto;background:yellow;}
+.tabCarousel .tablist {float:left;width:300px; height:40px;margin:auto;list-type:none;margin:0 0 0 20px;padding:0;}
+.tabCarousel .tablist li {display:inline-block;width:26px;height:26px;border-radius:26px;margin:0 5px 0 0;padding:5px;list-style-type:none;text-align:center;background:#fff;border:1px solid #d9d9d9;}
+.tabCarousel .tablist li:hover {cursor:pointer;}
+.tabCarousel .tablist li.active {font-weight:bold;background:#FFC;}
+.tabCarousel .tabPanels {clear:both;background:#fff;padding:30px;margin:20px 0 0 0;border:1px solid #d9d9d9;border-radius:10px; box-shadow: #e8e8e8 0 0px 3px;}
+.tabCarousel .tabpanel {min-height:100px;float:none;margin-bottom:20px;font-size:18px !important;}
+.tabCarousel .tabpanel h4 {margin:0 !important;padding:0 !important;font-size:20px !important;}
+.tabCarousel .tabpanel.inactive {display:none;}
+.tabCarousel .hidden {display: none;}
+.tabCarousel .offscreen {
+    position: absolute;
+    left: -999em;
+}
+
+#play {float:left;margin:10px 0 -40px 300px;}
+
+.tabCarousel button:focus {outline:1px dotted black;}

@@ -1,0 +1,122 @@
+<ul>
+<li><a href="#id1053_creating_real_links">Creating &quot;Real&quot; Links</a></li>
+<li><a href="#id1053_creating_aria_links">Creating ARIA links</a>
+  <ul>
+    <li><a href="#id1053_add_role_link">Add role=&quot;link&quot;</a></li>
+    <li><a href="#id1053_add_link_functionality">Add Link Functionality</a></li>
+    <li><a href="#id1053_adding_keyboard_accessibility">Add Keyboard Accessibility for ARIA links</a></li>
+    <li><a href="#id1053_styling_aria_links">Style ARIA links for Accessibility</a></li>
+    </ul>
+</li>
+<li><a href="#id1053_is_it_a_button_or_link">Is it a Link, or is it a Button?</a></li>
+<li><a href="#id1053_related_resources">Related External Resources</a></li>
+</ul>
+
+<h2 id="id1053_creating_real_links">Creating &quot;Real&quot; Links</h2>
+<p>Usually the best way to put a link in an interface is to use a regular link, using either the <code>&lt;a&gt;</code> tag with a normal <code>href</code> value. You can also turn just about any tag &mdash; such as a <code>div</code> or a <code>span</code> or an <code>img</code> &mdash; into a link by adding <code>role=&quot;link&quot;</code>. Screen readers will treat these &quot;fake&quot; links as real links, and users will never know it wasn't a link to begin with. The downside of creating an ARIA link is that you have to always be remember the object's real purpose as you work with it with your scripts, styles, images, interactions, and so on. You may even forget to apply <code>role=&quot;link&quot;</code> in the first place, or may accidentally delete the role later and not realize it. That's why it's usually best to use real links whenever possible. Real links can be include text and/or images &mdash; even background images. With so much flexibility,  there aren't very many legitimate reasons to create fake links, but if you must, the techniques are shown after the first set of real link examples. </p>
+<p>One legitimate reason to use <code>role=&quot;link&quot;</code> instead of a real link is to toggle an object back and forth between being a link or being just regular text (or a regular image). Most links are static, but within dynamic web applications the link status may change as a result of user-initiated actions. For example, a company may decide to publish a list of documents on a web site, but make the names of the documents clickable as links only if users first log in via a popup modal AJAX dialog. Users would stay on the same page, and when the authentication process is complete a script would change the role of the list items to <code>role=&quot;link&quot;</code>. </p>
+<p><strong>Note: </strong>Real links do not require you to add <code>role=&quot;link&quot;</code>. The browser and screen reader already know it's a link. There's no harm in adding it, but neither is there any benefit. </p>
+
+<div class="example">
+<h3 class="good">Regular text link:</h3>
+<p><a href="https://dequeuniversity.com/">Deque University</a></p>
+<p><code class="block">&lt;a href=&quot;https://dequeuniversity.com/&quot;&gt;Deque University&lt;/a&gt;</code></p>
+</div>
+<h2 id="id1053_creating_aria_links">Creating ARIA Links</h2>
+<h3 id="id1053_add_role_link">Add <code>role=&quot;link&quot;</code></h3>
+<p>To create an ARIA link,   add <code>role=&quot;link&quot;</code> to a tag. Screen readers treat it like a real link, and will say &quot;link&quot; in association with reading the text or image alt text within the tag. 
+Adding <code>role=&quot;link&quot;</code> can be a good way to quickly fix some of the accessibility problems of existing content if the original developers neglected to take into account the needs of screen reader users. 
+<p><strong>Important:</strong> Don't forget to <a href="#id1053_add_link_functionality">add link functionality</a>, <a href="#id1053_adding_keyboard_accessibility">keyboard accessibility</a> and <a href="#id1053_adding_visual_focus_indicator">visual focus indicators</a>, as explained in the sections after the following examples.
+
+<div class="example">
+  <h3 class="good">ARIA link: <code>&lt;span&gt;</code> with text</h3>
+  <p class="ariaspantext"><span role="link" tabindex="0" onclick="linkSelf('https://dequeuniversity.com')">Deque University</span></p>
+  <p><code class="block">&lt;span <span class="highlight">role=&quot;link&quot; tabindex=&quot;0&quot;</span> onclick=&quot;linkSelf('https://dequeuniversity.com')&quot;&gt;Deque University&lt;/span&gt;</code></p>
+</div>
+<div class="example">
+  <h3 class="good">ARIA link: <code>&lt;img&gt;</code></h3>
+  <p class="ariabolditalic"><img role="link" tabindex="0" onclick="linkSelf('http://www.deque.com')" src="/assets/images/template/courses2014/deque_logo_smaller.png" alt="Deque" width="93" height="33"></p>
+  <p><code class="block">&lt;img <span class="highlight">role=&quot;link&quot; tabindex=&quot;0&quot;</span> src=&quot;deque.png&quot; onclick=&quot;linkSelf('http://www.deque.com')&quot; alt=&quot;Deque&quot; width=&quot;93&quot; height=&quot;33&quot;&gt;</code></p>
+</div>
+<div class="example">
+  <h3 class="good">ARIA link: <code>&lt;span&gt;</code> with text and image</h3>
+  <p class="ariaspantextimage"><span role="link" tabindex="0" onclick="linkSelf('/courses/aria-javascript')"><img src="/assets/images/aria_javascript/icon-home.png" width="16" height="16" alt=""> Course Home Page</span></p>
+  <p><code class="block">&lt;span <span class="highlight">role=&quot;link&quot; tabindex=&quot;0&quot;</span> onclick=&quot;linkSelf('/courses/aria-javascript')&quot;&gt;&lt;img src=&quot;/assets/images/aria_javascript/icon-home.png&quot; width=&quot;16&quot; height=&quot;16&quot; alt=&quot;&quot;&gt; Course Home Page&lt;/span&gt;</code></p>
+</div>
+<h3 id="id1053_add_link_functionality">Add Link Functionality</h3>
+<p>Adding <code>role=&quot;link&quot;</code> changes the identity of the item in the DOM for screen readers, but it does not change functionality at all. Screen readers will call it a link, but it won't actually be a link unless you add some scripting to make it act like a link.</p>
+<p>Which JavaScript methods are safe to use for accessibility? Fortunately, the common <code>onclick</code> is pretty universally accessible, and works with  a wide range of devices, including the mouse, keyboard, and touch screens. Other methods like <code>ondblclick</code> are less universal and may not allow for easy keyboard or touchscreen accessibility. </p>
+<div class="example">
+<h4 class="good">Link Scripts</h4>
+<p>The following functions are simple ways to activate links either in the same page or in a new window. </p>
+<p>In the HTML head:</p>
+<pre><code>/* opens links in the same window */
+function linkSelf(url) {
+   window.open(url, '_self');
+   return false;
+}
+
+/* opens links in a new window or tab */
+function linkBlank(url) {
+   window.open(url, '_blank');
+   return false;
+}</code></pre> 
+<p>In the HTML body:</p>
+<p><code class="block">&lt;span role=&quot;link&quot; tabindex=&quot;0&quot; <span class="highlight">linkSelf('http://www.deque.com')&quot;</span>&gt;Deque&lt;/span&gt;</code></p>
+<p>... OR ...</p>
+<p><code class="block">&lt;span role=&quot;link&quot; tabindex=&quot;0&quot; <span class="highlight">linkBlank('http://www.deque.com')&quot;</span>&gt;Deque (opens in new window)&lt;/span&gt;</code></p>
+<p><strong>Note:</strong> The link which opens in a new window warns the user that this will happen. You can provide this warning in plain text, as in this example, or you can insert a less obtrusive icon to convey the same information with alt text. Keep in mind that you would want this warning to be visible to all users. Hiding the warning offscreen or using any other similar technique for the benefit of screen reader users won't help anyone else. </p>
+</div>
+<h3 id="id1053_adding_keyboard_accessibility">Add Keyboard Accessibility for ARIA Links</h3>
+<p><strong>Important:</strong> You must also ensure the link is keyboard-accessible. Just adding <code>role=&quot;link&quot;</code> does not ensure keyboard accessibility. You will need to either add <code>tabindex=&quot;0&quot;</code> to the tag, if the link ought to appear in the normal tab order, or add <code>tabindex=&quot;-1&quot;</code> to the tag and then manipulate the keyboard accessibility with JavaScript if the link shouldn't appear in the default tab order of the DOM.
+<div class="example">
+<h4 class="good">Adding <code>tabindex</code> to ARIA Links</h4>
+<p>Add <code>tabindex="0"</code> if the link should appear in the default tab order of the document.</p>
+<p><code class="block">&lt;span role=&quot;link&quot; <span class="highlight">tabindex=&quot;0&quot;</span>&gt;Download your contract&lt;/span&gt;</code></p>
+<p>Add <code>tabindex="-1"</code> if the link should not be focusable until  activated by a script. The script will need to change the value to <code>tabindex=&quot;0&quot;</code> at the appropriate time.</p>
+<p><code class="block">&lt;span role=&quot;link&quot; <span class="highlight">tabindex=&quot;-1&quot;</span>&gt;View results&lt;/span&gt;</code></p>
+</div>
+<h3 id="id1053_styling_aria_links">Style ARIA Links for Accessibility</h3>
+<p><strong>Make the Link Look Like a Link</strong></p>
+<p>Whatever tag you use, wither <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code> or <code>&lt;p&gt;</code> or <code>&lt;img&gt;</code> or whatever else, you should style it to make it look like a link, for the benefit of sighted users. Don't forget low vision users! Make sure there is enough contrast between the foreground text and the background colors to pass accessibility guidelines. </p>
+
+<div class="example">
+<h4 class="good">Styles for ARIA  links</h4>
+<p>It's usually best to choose colors that match the styles of the regular links in a web design. In the example below, all real links and all items with <code>role=&quot;link&quot;</code> will have the same look:</p>
+<pre><code>a,
+[role=link] {
+    color:blue;
+    text-decoration:underline;
+}</code></pre></div>
+
+<h4 id="id1053_adding_visual_focus_indicator"><strong>Add a Visual Focus Indicator for ARIA links</strong></h4>
+<p><strong>Ensure the focus is visible.</strong> To ensure that sighted keyboard users know when the focus is on the link, you will need to add styles for <code>:focus</code>. It's usually a good idea to add styles for <code>:hover</code> and <code>:active</code> as well, in particular to benefit users with low vision who may have trouble knowing when the mouse cursor is over the link. </p>
+<div class="example">
+<h4 class="good"><code>:focus</code>, <code>:hover</code>, and <code>:active</code> Styles for Links</h4>
+<p>Note that the same styles have been applied to &quot;real&quot; links, with the reference to the <code>&lt;a&gt;</code> tag, as well as to all items with <code>role=&quot;link&quot;</code>. </p>
+<p>Also note that the cursor style has been changed to &quot;pointer,&quot; to make it look like the link is clickable when users hover the mouse over the object.</p>
+<pre><code>a:focus,
+a:active,
+a:hover,
+[role=link]:focus,
+[role=link]:active,
+[role=link]:hover {
+    outline: #8cc63f solid 2px;
+    cursor: pointer;
+    background: #fdf6e7;
+    color: #771919;
+}</code></pre>
+</div>
+<h2 id="id1053_is_it_a_button_or_link">Is it a Link, or is it a Button?</h2>
+<p>A question that seems to arise frequently is whether an item is a button or a link. When is it most appropriate to use a button (or to assign <code>role=&quot;button&quot;</code>) and when is it most appropriate to use a link (or assign <code>role=&quot;link&quot;</code>)? </p>
+<p>First, we should admit that, in the grand scheme of things, this is a question of minor importance. As long as the feature is fully accessible, it doesn't matter much whether it's a button or link, as long as the intent of the feature is conveyed in an understandable way to users. So what follows is more opinion than guideline or rule. </p>
+<p>Generally speaking, features that look or act like controls within applications (forms and widgets) should be buttons, especially if the user isn't taken to a new page or area within the page. Features that connect content by navigating users from one area or page to another area or page are generally links. There is a lot of overlap in these functions, so you could be forgiven for marking something as a button that someone would mark as a link or vice versa. Still, buttons are mainly for application-like features and links are mainly for navigating. </p>
+<p>See Also:</p>
+<ul>
+  <li><a href="[[~1057]]">Buttons</a></li>
+</ul>
+<h2 id="id1053_related_resources">Related External Resources</h2>
+<ul>
+  <li>The official W3C documentation: <a href="http://www.w3.org/TR/wai-aria/roles#link">http://www.w3.org/TR/wai-aria/roles#link</a></li>
+  <li>AOL DHTML style guide: <a href="http://access.aol.com/dhtml-style-guide-working-group/#link">http://access.aol.com/dhtml-style-guide-working-group/#link</a></li>
+</ul>

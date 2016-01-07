@@ -1,0 +1,91 @@
+.carousel-images .offscreen {
+    position: absolute;
+    left: -999px;
+    top: -30px;
+    height: 2px;
+    width: 2px;
+    overflow: hidden;
+}
+
+.carousel-images a img {
+    border: none;
+}
+
+.carousel-images {
+    margin: 0 auto;
+    width: 600px;
+}
+
+.carousel-images .imagegroup {
+    text-align: center;
+    overflow: hidden;
+}
+
+.carousel-images .imagegroup {
+    width: 600px;
+    overflow: none;
+    height: 240px;
+}
+
+.carousel-images .imagegroup ul {
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    width: 2250px;
+}
+
+.carousel-images .imagegroup li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+}
+
+.carousel-images .controls {
+    text-align: center;
+    clear: both;
+}
+
+.carousel-images .controls ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.carousel-images .controls li {
+    display: inline-block;
+    height: 28px;
+    width: 28px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.carousel-images .controls li a {
+    height: 26px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    display: inline - block;
+}
+
+.carousel-images .controls li img {
+    padding: 5px;
+    display: inline - block;
+}
+
+.carousel-images .controls li img[role = button]: hover,
+.carousel-images .controls li img[role = button]: focus,
+.carousel-images .controls li img[role = button]: active,
+.carousel-images .controls li a: hover,
+.carousel-images .controls li a: focus,
+.carousel-images .controls li a: active {
+    cursor: pointer;
+    outline: 1px solid #9fb4fa;
+    background: # f7f9ff;
+}
+
+.carousel-images #playPauseButton: hover {
+    border: 0 !important;
+    margin: 0px;
+}

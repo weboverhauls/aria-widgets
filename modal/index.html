@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Alert Dialog</title>
+<link rel="stylesheet" href="styles.css">
+<script src="/assets/js/jquery.min.js"></script>
+<script src="modaldialog.js"></script>
+</head>
+<body>
+<div id="mainContent">
+    <button id="playButton">Play in our sandbox!</button>
+    <p id="returnMessage" tabindex="0"></p>
+</div>
+<div id="modal-background"></div>
+<div id="modal-content" class="modal" aria-labelledby="modalheader">
+    <div id="documentOverlay" role="document">
+        <h1 id="modalheader" tabindex="0">Sandbox Terms and Conditions</h1>
+        <div id="modalTextDiv" tabindex="0">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Maecenas eu eros eget nulla sollicitudin suscipit. Quisque ac
+            tristique lacus. Sed scelerisque eleifend orci, eu viverra ante.
+            Sed pharetra felis at volutpat sollicitudin. Curabitur cursus neque
+            nulla, a tempor risus tincidunt eget. Praesent convallis tincidunt
+            orci, fermentum luctus augue euismod id. Vestibulum lacus massa,
+            rhoncus at aliquet ac, viverra mattis metus.</p>
+
+            <p>Sed volutpat mauris non turpis viverra, at rutrum nulla
+            lobortis. Morbi a volutpat nisl. Curabitur ac egestas eros. Nullam
+            eget sagittis elit. In molestie euismod ante et posuere. Phasellus
+            ac diam sem. Donec tincidunt, justo eget tempor commodo, elit metus
+            auctor mauris, sit amet aliquet elit arcu quis ante. Nulla posuere
+            dui lacus, eu commodo lectus sollicitudin ut. Vestibulum nec neque
+            et sapien convallis sollicitudin vel id lectus. Ut accumsan ipsum
+            aliquet accumsan rhoncus. Praesent cursus elit orci, quis pulvinar
+            dolor placerat non. Fusce id viverra libero.</p>
+
+            <p>Integer pellentesque dapibus elit at laoreet. Vestibulum enim
+            arcu, lacinia eget orci sit amet, mollis porta massa. Aenean
+            venenatis posuere erat, facilisis aliquet libero sollicitudin ac.
+            Proin euismod venenatis placerat. Vivamus pharetra eros nec enim
+            semper, vitae euismod sapien volutpat. Cras vitae tellus porta,
+            vehicula ipsum vitae, fermentum neque. Maecenas fringilla vitae
+            arcu a ultricies. Donec a congue dolor, quis vestibulum tortor. Sed
+            iaculis dolor id urna posuere, eget blandit nisl pellentesque.
+            Vestibulum a nisl sed arcu interdum suscipit id at magna. Proin
+            sagittis tincidunt pulvinar.</p>
+
+            <p>Cras et pulvinar felis, sit amet vehicula est. Suspendisse
+            viverra ante vel pellentesque mattis. Nunc mollis orci enim, at
+            posuere turpis condimentum non. Aliquam ut enim lacinia,
+            scelerisque leo eu, cursus metus. Mauris vitae tellus tortor.
+            Donec ullamcorper ipsum fermentum lectus cursus, at suscipit
+            arcu elementum. Praesent massa leo, gravida eu dictum at,
+            sagittis eget purus. Aenean vel arcu nec mauris scelerisque
+            vehicula. Etiam eu ipsum pulvinar, tincidunt purus nec,
+            malesuada nulla. In pulvinar non enim in accumsan. Morbi et
+            malesuada leo, et porttitor lacus. In ac lobortis felis, sed
+            luctus nisl. Cras lobortis dapibus risus ac euismod. Mauris
+            ornare luctus erat, pulvinar iaculis augue mollis ultricies. Ut
+            et erat at mauris dignissim mattis. Mauris sit amet nisi dolor.</p>
+        </div>
+            <p id="acceptLegend">Do you accept the terms and conditions?</p>
+            <input type="radio" name="accept" value="yes" id="acceptYes" aria-labelledby="acceptLegend yesLabel"><label id="yesLabel" for="acceptYes">Yes</label>
+            <input type="radio" name="accept" value="no" id="acceptNo" aria-labelledby="acceptLegend noLabel"><label id="noLabel" for="acceptNo">No</label>
+        <button id="submitButton">Submit</button>
+    </div>
+</div>
+<div id="liveUpdate" class="offscreen"></div>
+</body>
+</html>

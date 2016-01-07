@@ -1,0 +1,81 @@
+<div id="loading" tabindex="-1" style="display: none;">Please wait while options are configured...</div>
+<fieldset id="live-config">
+  <legend>How do you want to configure your live region?</legend>
+  <div class="form">
+    <div>
+      <input type="radio" id="default" value="default" name="cus-def" aria-describedby="role-help">
+      <label for="default">Use role defaults</label>
+      <span id="role-help" class="helper">(values for aria-live, aria-atomic and aria-relevant will be auto-populated)</span>
+    </div>
+    <div>
+      <input type="radio" id="custom" value="custom" name="cus-def" checked="checked">
+      <label for="custom">Create custom live region</label>
+    </div>
+  </div>
+  <div class="form">
+    <label for="role">role:</label>
+    <select id="role">
+      <option selected="selected">status</option>
+      <option>alert</option>
+      <option>log</option>
+      <option>marquee</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="aria-live">aria-live value:</label>
+    <select id="aria-live">
+      <option selected="selected">polite</option>
+      <option>assertive</option>
+      <option>off</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="aria-atomic">aria-atomic value:</label>
+    <select id="aria-atomic">
+      <option selected="selected">true</option>
+      <option>false</option>
+    </select>
+  </div>
+  <div class="field">
+    <label for="aria-relevant">aria-relevant value:</label>
+    <select id="aria-relevant">
+      <option selected="selected">text</option>
+      <option>additions</option>
+      <option>removals</option>
+      <option>all</option>
+    </select>
+  </div>
+  <div class="field">
+    <div id="trigger">Trigger content change:</div>
+    <ul role="group" aria-labelledby="trigger">
+      <li>
+        <input type="radio" name="trigger-type" aria-describedby="content-change-help" id="once" value="once" checked="checked">
+        <label for="once">Once</label>
+      </li>
+      <li>
+        <input type="radio" name="trigger-type" aria-describedby="content-change-help" id="five" value="five">
+        <label for="five">Every 5 seconds</label>
+      </li>
+      <li>
+        <input type="radio" name="trigger-type" aria-describedby="content-change-help" id="ten" value="ten">
+        <label for="ten">Every 10 seconds</label>
+      </li>
+    </ul>
+    <div id="content-change-help" class="helper">
+      Content change will alternate between additions and modifications with the exception of content removal every 10th iteration.
+    </div>
+  </div>
+</fieldset>
+<button type="button" aria-controls="fixture" id="submit">Trigger Live Region</button>
+<button type="button" aria-controls="fixture" id="clear">Clear added content</button>
+<button type="button" aria-controls="fixture" disabled="disabled" id="stop">Stop adding content</button>
+<h2>Live Region</h2>
+<div id="fixture">
+  <div>
+    <div id="static">
+      <h3>Static Content</h3>
+      <div>The changing content will take place below.</div>
+    </div>
+  </div>
+  <div id="update"></div>
+</div>

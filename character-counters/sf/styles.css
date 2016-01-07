@@ -1,0 +1,58 @@
+#example-form {
+	
+}
+
+
+.field label {
+    vertical-align: top;
+    display: block;
+}
+.field input[type=text] {
+	width:300px;
+	border: 1px solid #999;
+	padding:4px;
+}
+
+.field textarea {
+    border: 1px solid #999;
+	width:300px;
+	height:5em;
+	padding:5px;
+}
+
+#zero-characters {
+    display: none;
+    position: absolute;
+    width: 250px;
+    margin: 0 auto;
+    text-align: center;
+    top: 150px;
+    z-index: 15;
+    background-color: #fff;
+    border: 5px solid #ccc;
+}
+
+#zero-characters h2 {
+    margin: 0;
+    padding-top: 0;
+    background-color: #ccc;
+}
+
+.offscreen, .offscreen p {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* old ie */
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+#close-char-modal:focus {
+    outline: 2px solid;
+}
+
+.md {
+    background-color: #eee;
+    padding: 3px;
+    color: #000;
+}

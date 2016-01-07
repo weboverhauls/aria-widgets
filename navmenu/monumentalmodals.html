@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Monumental Modals</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="jquery.js"></script>
+        <script src="dropdown.js"></script>
+    </head>
+
+    <body>
+        <header role="banner">
+        <p>ARIA Widgets, Inc</p>
+        </header>
+        <nav role="navigation">
+        <ul id="mainnav">
+            <li id="menuHome" class="first level1" ><a href="index.html">Home</a></li>
+            <li class="level1 parent here">
+                <a id="menuProducts" href="products.html" aria-controls="subMenuProducts" >Products <img src="/assets/images/template/courses2014/triangle-down.png" width="9" height="9" alt=""></a>
+            <ul id="subMenuProducts" aria-labelledby="menuProducts" class="here">
+                <li class="first level2"><a href="supersliders.html">Super Sliders</a></li>
+                <li class="level2"><a href="awesomeaccordions.html">Awesome Accordions</a></li>
+                <li class="level2"><a href="tantalizingtooltips.html">Tantalizing Tooltips</a></li>
+                <li class="last level2 self"><a href="monumentalmodals.html"><span class="offscreen">You are here: </span>Monumental Modals</a></li>
+            </ul>
+            </li>
+            <li class="level1 parent"><a id="menuServices" href="services.html" aria-controls="subMenuServices">Services <img src="/assets/images/template/courses2014/triangle-down.png" width="9" height="9" alt=""></a> 
+            <ul id="subMenuServices" aria-labelledby="menuServices"> 
+                <li class="first level2"><a href="ariaconsulting.html">ARIA consulting</a></li>
+                <li class="level2"> <a href="javascriptprogramming.html">JavaScript programming</a></li>
+                <li class="last level2"><a href="widgetwhileyouwait.html">Widget-While-You-Wait</a></li>
+            </ul>
+            </li>
+            <li class="level1"><a href="about.html">About</a> </li>
+            <li class="last level1"><a href="contact.html">Contact</a></li>
+        </ul>
+        </nav>
+        <main role="main">
+        <h1>Monumental Modals</h1>
+        <p>Here is the monumental modals page. This is where we would write text for this web page, but since this is just an example, this is just placeholder text, so feel free to stop reading it at any point. Below this placeholder text is a footer. The footer is shorter than this paragraph, but is probably even less interesting. </p>
+        </main>
+        <footer role="contentinfo">
+        Copyright ARIA Widgets, Inc. All Rights Reserved.
+        </footer>
+    </body>
+</html>

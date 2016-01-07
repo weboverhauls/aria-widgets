@@ -1,0 +1,36 @@
+.accordion ul {
+    margin:0;padding:0;width:300px;list-style:none;font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+.accordion ul ul {
+    display:none;
+}
+.accordion ul .here ul {
+    display:block;
+}
+.accordion li {
+    margin:0;padding:0;list-style:none;
+}
+.accordion li .category {
+    display:block;background:#375898;color:#fff;padding:3px 6px;border:1px solid #fff;
+}
+.accordion li li {
+    background:#fff;color:#375898;
+}
+.accordion li a {
+    display:block;padding:3px 5px 3px 20px;text-decoration:none; border-bottom:1px dashed #375898;color:#375898;
+}
+.accordion li.last a {
+    border-bottom:none;
+}
+.accordion li .category:hover {
+    cursor:pointer;color: #FFC;background:#4b6fb6
+}
+.accordion li a:hover {
+    cursor:pointer;background:#ffc;
+}
+html body .expanded {
+    display: block;
+}
+.accordion li.self a {
+    background:#FFC;color:#990000;
+}

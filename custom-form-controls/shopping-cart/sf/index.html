@@ -1,0 +1,31 @@
+<p>Content updated dynamically</p>
+  <a href="#">dummy link</a>
+<div id="cart">
+    <table class="list" tabindex="-1">
+      <caption class="clipped">
+        <span>Shopping cart, total </span>
+        <span class="total"></span>
+        <span> dollars</span>
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Thumbnail</th>
+          <th scope="col">Item Name</th>
+          <th scope="col">Unit price</th>
+          <th id="qty-header" scope="col">Quantity</th>
+          <th scope="col">Actions</th>
+          <th scope="col">Extras</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="summary">
+      <span id="cart-total">
+        <span>Cart Total: $</span><span class="total"></span>
+      </span>
+    </div>
+
+    <div id="cart-log" class="clipped" aria-live="polite" aria-atomic="true"></div>
+  </div>

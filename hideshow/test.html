@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Details Example</title>
+    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+    <style type="text/css">
+      .container {
+        width:680px;
+        margin:0 auto;
+      }
+      .hover {cursor:pointer;}
+      .summary::before {
+        content: "►";
+        padding-right: 5px;
+        font-size: .8em;
+      }
+      details, summary {
+        display: block;
+      }
+      .notSupported[open] .summary::before {
+        content: "▼";
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container" ><main role="main">
+      <h1>Details Examples</h1>
+      <details>
+        <summary role="button" tabindex="0">Copyright 1999-2014.</summary>
+        <p> - by Refsnes Data. All Rights Reserved.</p>
+        <p>All content and graphics on this web site are the property of the company Refsnes Data.</p>
+      </details>
+      <br>
+      <br>
+      <details>
+        <p>This is a test of the details tag without a summary tag. A default should be added. It will simply say "details".</p>
+      </details>
+      <br>
+      <br>
+      <details open>
+        <summary>Default open</summary>This is raw content within the details tag.
+      </details>
+      <br>
+      <br>
+      <details>
+        <summary id="btn" tabindex="0">Button details tags</summary>
+        <p>Content goes here. 
+      </details>
+      <br>
+      <br>
+      <details>
+        <summary>Multiple details tags</summary>
+        <p>Content goes here. Then comes another details tag:
+          <details>
+            <summary>Second level</summary>
+            <p>The next level of content.
+          </details>
+      </details>
+      <br>
+      <br>
+      <div class="details">
+        <div class="summary">Toggle me</div>
+        <p>This is a fake details tag.</p>
+        <p>Put content here</p>
+        <p>Put more content here</p>
+      </div>
+      <br>
+      <br>
+      <div class="details">
+        <div class="summary">Toggle me</div>
+        <p>This is a fake details tag with text nodes.</p>
+        Lone lonely text.
+      </div>
+      <br>
+      <div>
+        <div class="summary">Fake summary. shouldn't get focus </div>
+        This text should stay visible.
+      </div>
+      <br>
+
+      <script type="text/javascript">
+
+        var detailsUnsupportedHandler = function(event) { 
+           if (event.which === 1 || event.which === 13 || event.which === 32) {
+            var detailsTag = $(this).parent();
+            var expanded = toggleSummaryExpanded($(this));
+            var tog = function () {
+              toggleOpen(detailsTag);
+            };
+
+            toggleChildren(detailsTag, expanded);
+            window.setTimeout(tog,500);
+          }
+        };        
+        var detailsSupportedHandler = function (event) {
+          var $target = $(this);
+
+          toggleSummaryExpanded($target.parent());
+        };
+
+        var toggleChildren = function(target, expanded) {
+          // Cycle through children and toggle show/hide
+          target.children().each(function(index, el) {
+              var $el = $(el);
+              if (index !== 0) {
+                if (expanded) {
+                  $el.hide();
+                } else {
+                  $el.show();
+                }
+              }
+            });
+        };
+        var toggleOpen = function(target) {
+          if (target.attr('open')) {
+            target.attr('open', false);
+          } 
+          else {
+            target.attr('open', true);
+          }
+        };
+        var toggleSummaryExpanded = function(target) {
+          var expanded = true;
+          if (target.attr('aria-expanded') === undefined || !target.attr('aria-expanded') || target.attr('aria-expanded') == 'false') {
+            expanded = false;
+          } 
+          target.attr('aria-expanded', !expanded);
+          return expanded; // return old state 
+        };
+        var initDetailsTags = function (config) {
+          var testTag = document.createElement('details');
+          var detailsTagSupported = ('open' in testTag);         console.log('Details supported? '+(detailsTagSupported?'Yes':'No'));
+          
+          // Cycle through details tags
+          $('details').each( function(index, detailsTag) {
+            var $detailsTag = $(detailsTag); 
+            var open = detailsTagSupported ? $detailsTag.prop('open') : false;
+            var $firstChild = $detailsTag.children().first(); 
+
+            // Add a wrapper to textnodes
+            $detailsTag.contents().filter(function(){return this.nodeType === 3 && /\S/.test(this.nodeValue);}).wrap('<span></span>');
+            
+            // Add summary if missing
+            if (!$firstChild.length || $firstChild.prop('nodeName') != 'SUMMARY') {
+              $firstChild = $('<summary aria-expanded="' + open + '">Details</summary>');
+              $detailsTag.prepend($firstChild);
+            }
+            // Otherwise set current expanded state
+            else {
+              $firstChild.attr('aria-expanded', open);
+            }
+
+            // Add handlers
+            if (detailsTagSupported) {
+              $firstChild.click(detailsSupportedHandler);
+            } else {
+              $detailsTag.attr('open', open).addClass('notSupported');
+              toggleChildren($detailsTag, true);
+              $firstChild.attr('tabindex', 0).attr('role', 'button').addClass('summary');
+              $firstChild.on('click keydown', detailsUnsupportedHandler);
+            }
+          });
+          
+          var fakeSummary = $('.details > .summary'); 
+          $('.details').addClass('notSupported');
+          fakeSummary.each( function(index, tag) { 
+            // Add a wrapper to textnodes
+            $(tag).parent().contents().filter(function(){return this.nodeType === 3 && /\S/.test(this.nodeValue);}).wrap('<span></span>');
+            // Default close
+            toggleChildren($(tag).parent(), true);
+            // Add handler
+            $(tag).attr('aria-expanded', false).attr('tabindex', 0).attr('role', 'button').on('click keydown', detailsUnsupportedHandler);
+          });
+          // $('#btn').on('click', function(event) {
+          //   toggleSummaryExpanded($(this));
+          // });
+        };
+        $(document).ready(function() {
+          $("#error_feedback").focus();
+          initDetailsTags();
+        });
+
+      </script>
+    </main></div>
+    <div>
+      
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,88 @@
+#mega-menu {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.fa {
+    margin-right: 5px;
+}
+
+.fa.fa-toggle-down {
+    margin-left: 20px;
+}
+
+#mega-menu *:focus {
+    outline: 4px solid #104BA9;
+}
+
+#mega-menu > li.has-drop.active > a {
+    background-color: #fff;
+    color: #104BA9;
+}
+
+
+#mega-menu .droplet {
+    display: none;
+    font-size: 14px;
+    outline: 3px solid #ccc;
+    position: absolute;
+	background-color:#fff;
+}
+
+h2.col-head {
+    margin: 1px;
+    padding: 0;
+    text-decoration: underline;
+}
+
+#mega-menu .droplet .col {
+    display: inline-block;
+	background-color:#fff;
+    vertical-align: top;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+}
+
+#mega-menu .droplet .col ul {
+    padding: 5px;
+    margin: 0 auto;
+    list-style-type: none;
+}
+
+#mega-menu .droplet .col a {
+    display: block;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+#mega-menu .droplet .col a:focus,
+#mega-menu .droplet .col a:hover {
+    background-color: #104BA9;
+    color: #fff;
+}
+
+#mega-menu > li {
+    list-style-type: none;
+    display: inline-block;
+    margin: 5px;
+}
+
+#mega-menu > li > a {
+    position: relative;
+    display: block;
+    font-size: 14px;
+    text-align: center;
+    width: 135px;
+    padding: 7px;
+    background-color: #ccc;
+    text-decoration: none;
+    color: #000;
+}
+
+#mega-menu > li > a:focus,
+#mega-menu > li > a:hover {
+    color: #104BA9;
+    background-color: #fff;
+}

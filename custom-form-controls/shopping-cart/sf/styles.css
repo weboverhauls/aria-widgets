@@ -1,0 +1,119 @@
+:focus {
+  outline: 2px solid;
+}
+
+.clipped {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute;
+  overflow: hidden;
+  width: 0;
+}
+
+.dollars::before {
+  content: '$';
+}
+
+#cart .list {
+  width: 100%;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px dotted #ccc;
+}
+
+#cart .item {
+  padding: 10px 0;
+  border-top: 1px dotted #ccc;
+}
+
+#cart th, #cart td {
+  padding: 0 10px;
+}
+
+#cart table > tbody > tr:nth-child(even) {
+  background-color: #eee;
+}
+
+#cart .thumb {
+  width: 100px;
+  padding: 10px;
+}
+
+#cart .quantity input {
+  width: 50px;
+  padding: 0 0 0 5px;
+}
+
+#cart .actions {
+  padding: 10px;
+  width: 250px;
+}
+
+#cart .actions ul,
+#cart .extras ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: .9em;
+}
+
+#cart .actions button {
+  background-color: inherit;
+  border: none;
+  text-decoration: underline;
+}
+
+#cart .actions button:hover,
+#cart .actions button:focus {
+  color: blue;
+}
+
+#cart .extras {
+  width: 150px;
+}
+
+#cart .extras li {
+  display: none;
+}
+
+#cart .extras li.active {
+  display: block;
+}
+
+#cart td.total {
+  width: 80px;
+}
+
+#cart .summary::after {
+  clear: both;
+  content: '';
+  display: table;
+}
+
+#cart-total {
+  float: right;
+  padding: 20px;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.confirmation {
+  box-shadow: 0px 0px 8px #ccc;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 20px;
+  height: 150px;
+  width: 400px;
+  position: fixed;
+  top: 20vh;
+  left: calc(50vw - 200px);
+}
+
+.confirmation .close {
+  display: none;
+}
+
+.confirmation-actions {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}

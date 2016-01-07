@@ -1,0 +1,85 @@
+.accordionTablistMixed {
+	width:330px;float:left;
+	background:#fff;
+	border-radius:5px;
+	box-shadow: 0 0 4px #b2b2b2 !important;
+	padding:5px;
+}
+	
+.accordionTablistMixed [role="tab"] {
+	display:block;
+	color:#fff !important;
+	padding:3px 6px 3px 25px !important;
+	margin:0 !important;
+	border: 1px solid #fff !important;
+	text-align:left !important;
+	font-size:14px !important;
+}
+
+.accordionTablistMixed .active[role="tab"] {
+	background: #375898 url("/assets/images/template/dequeUniversity/triangle-down-white12.png") 6px center no-repeat !important;	
+}
+
+.accordionTablistMixed [role="tab"] {
+	background: #375898 url("/assets/images/template/dequeUniversity/triangle-right-white12.png") 6px center no-repeat !important;	
+}
+	
+.accordionTablistMixed [role="tab"]:hover {
+	cursor:pointer;
+	color: #FFC !important;
+	background-color:#4b6fb6 !important;
+}
+
+.accordionTablistMixed [role="tab"]:focus,
+.accordionTablistMixed [role="tab"]:active {
+	outline:#8cc63f 2px solid !important;
+	background-color: #00274d !important;
+}
+
+.accordionTablistMixed [role="tabpanel"] {
+	display:none;
+}
+	
+.accordionTablistMixed [role="tabpanel"][aria-hidden="false"] {
+	display:block;
+	padding:8px;
+}
+
+.accordionTablistMixed [role="tabpanel"] li {
+	background:#fff;
+	color: #484641;
+}
+
+.accordionTablistMixed [role="tabpanel"] li a {
+	color:#375898;
+}
+
+.accordionTablistMixed [role="tabpanel"] li.last a {
+	border-bottom:none;
+}
+
+.accordionTablistMixed div[role="tabpanel"] li a:hover {
+	cursor:pointer;
+	background:#ffc !important;
+	border:none !important;
+	outline:#8cc63f 1px solid;
+}
+.accordionTablistMixed div[role="tabpanel"] li.self a {
+	background:#FFC;color:#990000;
+}
+
+.accordionTablistMixed div[role="tabpanel"]  p {
+	margin:0 23px;
+}
+
+.accordionTablistMixed h3 {
+	background:none !important;
+	border:none !important;
+	border-radius:0 !important;	
+	margin:0 !important;
+	padding:0 !important;
+}
+
+.accordionTablistMixed img {
+	border-radius:5px;
+}

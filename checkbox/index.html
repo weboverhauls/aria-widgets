@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>ARIA Checkboxes</title>
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/aria/radiocheckbox/radiocheckbox.js"></script>
+<link href="/assets/js/aria/checkbox/styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+
+<div>
+    <h2 tabindex="0">Checkbox Example</h2>
+<fieldset class="inline noborder">
+   <legend id="checkboxes1" tabindex="0">Choose one or more colors:</legend>
+   <div role="application">
+    <img role="checkbox" aria-label="Black" alt="Black" aria-checked="true" tabindex="0" 
+         src="/assets/images/aria_javascript/checkbox_black_checked.png" width="16" height="16" /> 
+    <img role="checkbox" aria-label="Dark Blue" alt="Dark Blue" aria-checked="false" tabindex="0" 
+         src="/assets/images/aria_javascript/checkbox_darkblue_unchecked.png"  width="16" height="16" />
+    <img role="checkbox" aria-label="Light Blue" alt="Light Blue" aria-checked="false" tabindex="0" 
+         src="/assets/images/aria_javascript/checkbox_lightblue_unchecked.png" width="16" height="16" />
+    <img role="checkbox" aria-label="Green" alt="Green" aria-checked="false" tabindex="0" 
+         src="/assets/images/aria_javascript/checkbox_green_unchecked.png" width="16" height="16" />
+    <img role="checkbox" aria-label="Magenta" alt="Magenta" aria-checked="false" tabindex="0" 
+         src="/assets/images/aria_javascript/checkbox_magenta_unchecked.png" width="16" height="16" />
+    <img role="checkbox" aria-label="Orange"  alt="Orange" aria-checked="false" tabindex="0" 
+         src="/assets/images/aria_javascript/checkbox_orange_unchecked.png" width="16" height="16" />
+    <img role="checkbox" aria-label="Red" alt="Red" aria-checked="false" tabindex="0" 
+         src="/assets/images/aria_javascript/checkbox_red_unchecked.png" width="16" height="16" />
+    <img role="checkbox" aria-label="Yellow" alt="Yellow" aria-checked="false" tabindex="0" 
+         src="/assets/images/aria_javascript/checkbox_yellow_unchecked.png" width="16" height="16" />
+   </div>
+</fieldset>
+</div>
+
+<img role="checkbox" alt="gold" aria-checked="true" tabindex="0" id="save" src="/assets/images/aria_javascript/checkbox_black_checked.png" aria-labelledby="savelabel" /> 
+<label id="savelabel">Save my settings</label>
+
+</body>
+</html>

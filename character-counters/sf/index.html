@@ -1,0 +1,26 @@
+<form method="GET" id="example-form">
+    <div class="field">
+        <label for="email">Email:</label>
+        <input id="email" type="text">
+    </div>
+    <div class="field">
+        <label for="subject">Subject:</label>
+        <input id="subject" type="text">
+    </div>
+    <div class="field">
+        <label for="message">Your Message:</label>
+        <textarea id="message"  aria-describedby="chars-remaining"></textarea>
+    </div>
+    <div id="chars-remaining">
+        <span id="live-region-text" aria-live="polite">
+        <span class="count">150</span> characters remaining
+        </span>
+        of 150 characters
+    </div>
+
+</form>
+<div id="zero-characters" tabindex="-1" role="alertdialog" aria-labelledby="admessagehead1" aria-describedby="admessagebody1">
+    <h2 id="admessagehead1">Maximum Characters Exceeded</h2>
+    <p id="admessagebody1">Please limit your message to 150 characters.  Additional characters will not be entered.</p>
+    <a href="#" id="close-char-modal">Close</a>
+</div>

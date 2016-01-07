@@ -1,0 +1,39 @@
+#employee-table td,
+#employee-table th {
+  padding: 0;
+  border: 2px solid;
+  font-size: 16px;
+}
+#employee-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#employee-table th {
+  background: #eee;
+}
+
+#employee-table th i {
+  font-size: 14px;
+  padding: 5px;
+  width: 10px;
+}
+
+.th-body:focus {background-color:#fdf6e7 !important;}
+
+.th-body {
+  display: block;
+  width: 100%;
+}
+
+.visuallyhidden { 
+	border: 0; 
+	clip: rect(0 0 0 0); 
+	height: 1px; 
+	margin: -1px; 
+	overflow: hidden; 
+	padding: 0; 
+	position: absolute; 
+	width: 1px; 
+}
+

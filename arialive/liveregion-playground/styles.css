@@ -1,0 +1,58 @@
+:focus {
+  outline: 2px solid;
+}
+
+label, #trigger, #custom-default {
+  font-size: 1em;
+}
+
+.helper {
+  font-style: italic;
+}
+
+select {
+  background-color: #eee;
+  font-size: 1em;
+}
+
+ul {
+  margin: 2px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.inner-field {
+  font-size: 1em;
+  margin-left: 20px;
+}
+
+#fixture {
+  width: 85%;
+  margin: 0 auto;
+  text-align: center;
+  border: 5px solid #000;
+  height: 300px;
+  overflow: scroll;
+  paddingding: 11px;
+}
+
+#loading {
+  position: absolute;
+  width: 500px;
+  padding: 25px;
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  border: 10px double #fff;
+}
+
+#mean {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+}

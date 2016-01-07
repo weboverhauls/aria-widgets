@@ -1,0 +1,222 @@
+<!doctype html>
+<html>
+<head>
+  <title>Broken Menu</title>
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.1/jquery.js"></script>
+  <style>
+    #mega-menu {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .fa {
+        margin-right: 5px;
+    }
+
+    .fa.fa-toggle-down {
+        margin-left: 20px;
+    }
+
+    #mega-menu *:focus {
+        outline: 4px solid #104BA9;
+    }
+
+    #mega-menu > li.has-drop.active > a {
+        background-color: #fff;
+        color: #104BA9;
+    }
+
+
+    #mega-menu .droplet {
+        display: none;
+        font-size: 20px;
+        outline: 3px solid #ccc;
+        position: absolute;
+    }
+
+    h2.col-head {
+        margin: 1px;
+        padding: 0;
+        text-decoration: underline;
+    }
+
+    #mega-menu .droplet .col {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 auto;
+        padding: 10px;
+        text-align: center;
+    }
+
+    #mega-menu .droplet .col ul {
+        padding: 5px;
+        margin: 0 auto;
+        list-style-type: none;
+    }
+
+    #mega-menu .droplet .col a {
+        display: block;
+        color: #000;
+        margin: 0;
+        padding: 0;
+    }
+
+    #mega-menu .droplet .col a:focus,
+    #mega-menu .droplet .col a:hover {
+        background-color: #104BA9;
+        color: #fff;
+    }
+
+    #mega-menu > li {
+        list-style-type: none;
+        display: inline-block;
+        margin: 5px;
+    }
+
+    #mega-menu > li > a {
+        position: relative;
+        display: block;
+        font-size: 28px;
+        text-align: center;
+        width: 175px;
+        padding: 7px;
+        background-color: #ccc;
+        text-decoration: none;
+        color: #000;
+    }
+
+    #mega-menu > li > a:focus,
+    #mega-menu > li > a:hover {
+        color: #104BA9;
+        background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <ul id="mega-menu">
+      <li id="home"><a href="#"><i class="fa fa-home"></i>Home</a></li>
+      <li id="about" class="has-drop"><a href="#" aria-haspopup="true"><i class="fa fa-users"></i>About<i class="fa fa-toggle-down fa-1"></i></a>
+        <div class="droplet">
+          <div aria-labelledby="about-head-1" class="col">
+            <h2 id="about-head-1" class="col-head">Heading</h2>
+            <ul>
+              <li><a href="#">Item 1</a></li>
+              <li><a href="#">Item 2</a></li>
+              <li><a href="#">Item 3</a></li>
+              <li><a href="#">Item 4</a></li>
+            </ul>
+          </div>
+          <div aria-labelledby="about-head-2" class="col">
+            <h2 id="about-head-2" class="col-head">Heading</h2>
+            <ul>
+              <li><a href="#">Item 5</a></li>
+              <li><a href="#">Item 6</a></li>
+              <li><a href="#">Item 7</a></li>
+              <li><a href="#">Item 8</a></li>
+            </ul>
+          </div>
+          <div aria-labelledby="about-head-3" class="col">
+            <h2 id="about-head-3" class="col-head">Heading</h2>
+            <ul>
+              <li><a href="#">Item 9</a></li>
+              <li><a href="#">Item 10</a></li>
+              <li><a href="#">Item 11</a></li>
+              <li><a href="#">Item 12</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li id="contact" class="has-drop"><a href="#" aria-haspopup="true"><i class="fa fa-smile-o"></i>Contact<i class="fa fa-toggle-down fa-1"></i></a>
+        <div class="droplet">
+          <div aria-labelledby="about-head-1" class="col">
+            <h2 id="about-head-1" class="col-head">Heading</h2>
+            <ul>
+              <li><a href="#">Item 1</a></li>
+              <li><a href="#">Item 2</a></li>
+              <li><a href="#">Item 3</a></li>
+              <li><a href="#">Item 4</a></li>
+            </ul>
+          </div>
+          <div aria-labelledby="about-head-2" class="col">
+            <h2 id="about-head-2" class="col-head">Heading</h2>
+            <ul>
+              <li><a href="#">Item 5</a></li>
+              <li><a href="#">Item 6</a></li>
+              <li><a href="#">Item 7</a></li>
+              <li><a href="#">Item 8</a></li>
+            </ul>
+          </div>
+          <div aria-labelledby="about-head-3" class="col">
+            <h2 id="about-head-3" class="col-head">Heading</h2>
+            <ul>
+              <li><a href="#">Item 9</a></li>
+              <li><a href="#">Item 10</a></li>
+              <li><a href="#">Item 11</a></li>
+              <li><a href="#">Item 12</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li id="faqs" class="has-drop"><a href="#" aria-haspopup="true"><i class="fa fa-question-circle"></i>FAQs<i class="fa fa-toggle-down fa-1"></i></a>
+        <div class="droplet">
+          <div aria-labelledby="about-head-1" class="col">
+            <h2 id="about-head-1" class="col-head">Heading</h2>
+            <ul>
+              <li><a href="#">Item 1</a></li>
+              <li><a href="#">Item 2</a></li>
+              <li><a href="#">Item 3</a></li>
+              <li><a href="#">Item 4</a></li>
+            </ul>
+          </div>
+          <div aria-labelledby="about-head-2" class="col">
+            <h2 id="about-head-2" class="col-head">Heading</h2>
+            <ul>
+              <li><a href="#">Item 5</a></li>
+              <li><a href="#">Item 6</a></li>
+              <li><a href="#">Item 7</a></li>
+              <li><a href="#">Item 8</a></li>
+            </ul>
+          </div>
+          <div aria-labelledby="about-head-3" class="col">
+            <h2 id="about-head-3" class="col-head">Heading</h2>
+            <ul>
+              <li><a href="#">Item 9</a></li>
+              <li><a href="#">Item 10</a></li>
+              <li><a href="#">Item 11</a></li>
+              <li><a href="#">Item 12</a></li>
+            </ul>
+          </div>
+        </div>
+      </li>
+      <li id="links"><a href="#"><i class="fa fa-external-link"></i>Links</a></li>
+    </ul>
+  </div>
+  <script>
+    var megaMenu = document.getElementById('mega-menu');
+
+    // mouse stuff
+    $(' > li.has-drop', megaMenu).each(function () {
+      var dropdown = $('.droplet', $(this)[0]);
+
+      $(this).hover(
+        function () {
+          $(this).addClass('active');
+          $('.droplet', megaMenu).each(function (index, drop) {
+            if (drop !== dropdown) {
+              $(drop).hide();
+            }
+          });
+
+          $(dropdown).slideDown(100);
+
+        }, function () {
+          $(this).removeClass('active');
+          $(dropdown).slideUp(100);
+        }
+      );
+    });
+  </script>
+</body>
+</html>

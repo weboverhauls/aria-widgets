@@ -1,0 +1,99 @@
+
+<p>Interact with the example in the iframe below, or <a href="/assets/js/aria/navmenu/index.html" target="_blank">open the example in a new window</a></p>
+<iframe src="/assets/js/aria/navmenu/index.html" id="navmenuFrame" title="Drop-down navigation menu example"></iframe>
+
+<ul>
+  <li>Functionality</li>
+  <ul>
+    <li>Provides list of headers, which are links but also contain submenus of links</li>
+    <li>One header at a time can be expanded to show the submenu; expanding a header collapses any other expanded header</li>
+    <li>Keyboard Functionality</li>
+    <ul>
+      <li>Not exactly like a classic ARIA menu (in which you&rsquo;d tab in, use cursor keys to navigate, next tab goes out)</li>
+      <li>This is intended to work as a navbar, but also as a list of links, so tab goes through the visible options</li>
+      <li>Cursor keys do work:</li>
+      <ul>
+        <li>On a menu header, down will expand the submenu if it&rsquo;s collapsed, or go down to the first item if it&rsquo;s expanded (up has no effect)</li>
+        <li>Left/right go between headers, collapsing the old menu if it was expanded; when you get to beginning/end, left/right have no more effect</li>
+        <li>On menu items, up/down go through menu items (and again, tab also works); down on last item goes to next header, collapsing the old menu</li>
+      </ul>
+      <li>Two actions can be taken on a header, toggling its expanded state and following its link</li>
+      <ul>
+        <li>If it&rsquo;s expanded: </li>
+        <ul>
+          <li>Esc will close it</li>
+          <li>Enter will follow the link</li>
+        </ul>
+        <li>If it&rsquo;s not expanded:</li>
+        <ul>
+          <li>Enter, space, or down arrow will expand it</li>
+          <li>Link cannot be followed until it&rsquo;s expanded</li>
+        </ul>
+        <li>If there is no submenu, enter will follow the link</li>
+      </ul>
+    </ul>
+    <li>Mouse Functionality</li>
+    <ul>
+      <li>Menus expand on hover; when menu loses focus, it collapses</li>
+      <li>Clicking header follows the link</li>
+    </ul>
+    <li>Mouse/Keyboard Interaction</li>
+    <ul>
+      <li>Because you can interact with the system in both keyboard and mouse mode, it&rsquo;s possible for these systems to conflict with each other</li>
+      <ul>
+        <li>For instance, hover over menu, then use cursor to move to next menu</li>
+        <li>Or use enter to expand a menu, then hover over another menu</li>
+      </ul>
+      <li>Rule is: Last action takes precedence. In both the cases above, the last action taken would be the one that governs where the expanded menu/focus is</li>
+    </ul>
+  </ul>
+  <li>Implementation</li>
+  <ul>
+    <li>HTML</li>
+    <ul>
+      <li>Main element is HTML5 nav element with role=&rdquo;navigation&rdquo;</li>
+      <li>Inside the nav is a ul representing the top-level items (which are list items)</li>
+      <li>Each top menu list item contains: </li>
+      <ul>
+        <li>an anchor link</li>
+        <li>and optionally a ul that represents its submenu</li>
+        <ul>
+          <li>With role=group</li>
+          <li>ul contains list items with anchor links in them</li>
+        </ul>
+        <li>When the submenu exists:</li>
+        <ul>
+          <li>ARIA defines the relationship between the link and the submenu</li>
+          <ul>
+            <li>link has aria-controls pointing to the submenu&rsquo;s ID</li>
+            <li>submenu has aria-labelledby pointing to the link</li>
+          </ul>
+          <li>Link has aria-popup=true attribute</li>
+          <li>Link and submenu each have aria-expanded attribute dynamically set based on their expanded/collapsed state (starts off false)</li>
+        </ul>
+      </ul>
+    </ul>
+    <li>Javascript</li>
+    <ul>
+      <li>keydown handler on the topmenu li items, and the submenu li items, to handle cursor navigation, and esc/enter/space handling</li>
+      <ul>
+        <li>submenu li items also need to capture tab, to ensure that the menu is collapsed if it&rsquo;s tabbed out of at the bottom</li>
+        <li>tab on top menu is handled correctly with no additional code</li>
+      </ul>
+      <li>mouseenter and mouseleave handlers to handle hover</li>
+      <ul>
+        <li>Changes that are needed are too comprehensive for CSS :hover styling</li>
+      </ul>
+      <li>click on top menu to handle logic to expand or follow link if it is expanded</li>
+      <ul>
+        <li>Why is this logic needed? &nbsp;Shouldn&rsquo;t a mouse click always follow the link per the above behavior?</li>
+        <li>YES, but… when screen readers are enabled, keydown events are not reliably fired outside of an application context, and return/space fire a &ldquo;click&rdquo; event instead, so need click to do what the keydown handler for enter does</li>
+        <ul>
+          <li>But keydown handlers can&rsquo;t be neglected, as they&rsquo;re needed for sighted keyboard users, whose browsers will fire keydown events</li>
+        </ul>
+        <li>Fortunately, this logic also works for the mouse, as mousedown event gave focus and expanded the menu already, so click will follow the link</li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+

@@ -1,0 +1,64 @@
+
+<div id="table-cage">
+
+  <table id="employee-table" role="grid" aria-labelledby="employee-caption" aria-readonly="true">
+    <caption id="employee-caption">Employee Table<span id="captionUpdated"></span></caption>
+    <thead>
+      <tr role="row">
+        <th scope="col" role="columnheader" id="e-name" class="sortable" aria-sort="none" data-sort="text">
+            <span role="button" tabindex="0" class="th-body">Name<i class="fa fa-arrows-v"></i></span>
+        </th>
+        <th scope="col" role="columnheader" id="e-salary" class="sortable" aria-sort="none" data-sort="money">
+          <span role="button" tabindex="0" class="th-body">Salary ($)<i class="fa fa-arrows-v"></i></span>
+        </th>
+        <!-- not providing the sort type because it defaults to "standard" -->
+        <th scope="col" role="columnheader" id="e-extension" class="sortable" aria-sort="none">
+          <span role="button" tabindex="0" class="th-body">Extension<i class="fa fa-arrows-v"></i></span>
+        </th>
+        <th scope="col" role="columnheader" id="e-start-date" class="sortable" aria-sort="none" data-sort="date">
+            <span role="button" tabindex="0" class="th-body">Start Date<i class="fa fa-arrows-v"></i></span>
+        </th>
+        <th scope="col" role="columnheader" id="e-company" aria-disabled="true">Company</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr role="row">
+        <td role="rowheader" id="rob">Rob Derhak</td>
+        <td role="gridcell">74,500</td>
+        <td role="gridcell">1159</td>
+        <td role="gridcell">11/17/98</td>
+        <td role="gridcell">Telemericorp</td>
+      </tr>
+      <tr role="row">
+        <td role="rowheader" id="chuck">Chuck Garvey</td>
+        <td role="gridcell">96,000</td>
+        <td role="gridcell">1056</td>
+        <td role="gridcell">11/21/98</td>
+        <td role="gridcell">Telemericorp</td>
+      </tr>
+      <tr role="row">
+        <td role="rowheader" id="al">Al Schnier</td>
+        <td role="gridcell">92,000</td>
+        <td role="gridcell">4653</td>
+        <td role="gridcell">06/07/08</td>
+        <td role="gridcell">Telemericorp</td>
+      </tr>
+      <tr role="row">
+        <td role="rowheader" id="vinnie">Vinnie Amico</td>
+        <td role="gridcell">47,000</td>
+        <td role="gridcell">9844</td>
+        <td role="gridcell">12/16/14</td>
+        <td role="gridcell">Telemericorp</td>
+      </tr>
+      <tr role="row">
+        <td role="rowheader" id="jim">Jim Loughlin</td>
+        <td role="gridcell">55,000</td>
+        <td role="gridcell">7745</td>
+        <td role="gridcell">04/20/00</td>
+        <td role="gridcell">Telemericorp</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div id="liveForScreenReaders" class="visuallyhidden" aria-live="polite"></div>
+

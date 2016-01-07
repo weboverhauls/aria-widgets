@@ -1,0 +1,49 @@
+<div class="example">
+<h3 class="good" id="aria_tab_panel_example">ARIA Tab Panel Example</h3>
+<h4 class="neutral" id="about_our_product">About our product</h4>
+
+<div id="tabpanel1" class="tabpanel">
+
+ <ul class="tablist" role="tablist">
+
+   <li id="tab1" class="tab" aria-controls="panel1" aria-selected="false" role="tab" tabindex="0">Prices</li>
+
+   <li id="tab2" class="tab" aria-controls="panel2" role="tab" aria-selected="true" tabindex="0">Features </li>
+
+  </ul>
+
+
+<div id="panel1" class="panel" aria-labelledby="tab1" role="tabpanel" aria-hidden="true">
+
+ <h3 tabindex="0" class="neutral">Prices</h3>
+
+
+
+        List of prices   
+</div>
+
+<div id="panel2" class="panel" aria-labelledby="tab2" role="tabpanel" aria-hidden="false">
+
+  <h3 tabindex="0" class="neutral">Features</h3>
+
+List of product features....
+
+</div>
+ </div>
+
+</div>
+
+
+<h2 id="notes">Notes:  </h2>
+<p>Although the code is short and simple, it is fully accessible. This example uses: </p>
+<ol>
+  <li>aria-selected to show what tab is selected</li>
+  <li>aria-controls to show the relationship between tabs and tab panels</li>
+  <li>aria-hidden, to hide the unselected tab panel</li>
+  <li>When an tab is selected the following states are toggled: aria-selected in both tab elements and aria-hidden on both tab panels.</li>
+  <li> CSS selectors are used to bind aria-hidden and CSS display:none.</li>
+  <li>CSS selectors are used to bind aria-selected and the classes for selected or non selected tab panels.</li>
+  <li>Keyboard accessibility is given by  adding the enter key to the basic click event in the jquery code.</li>
+  <li>The tabs can also toggle using the left and right arrow keys (as a jquery function)</li>
+  <li>Note that often only the active tab is in the tabbing order. However, in this example both tabs are always in the tabbing order. I felt this pattern worked better for this context.</li>
+</ol>

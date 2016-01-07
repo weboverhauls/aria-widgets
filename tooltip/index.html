@@ -1,0 +1,254 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Alert Dialog</title>
+
+
+<script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+
+<style type="text/css">
+.tooltip,.arrow:after{background:#111;background:rgba(0,0,0,0.9)}
+span.tooltip{font-family:arial;font-size:14px;font-weight:normal;position:absolute;padding:10px 20px;color:#fff;-webkit-border-radius:7px;-moz-border-radius:7px;border-radius:7px;-webkit-background-clip:padding-box;-moz-background-clip:padding;background-clip:padding-box;margin-top:10px;text-align:center;text-decoration:none;box-shadow:0 0 3px #000;z-index:9999}
+
+.tooltip .arrow{display:block;width:70px;height:16px;overflow:hidden;position:absolute;left:50%;margin-left:-35px;bottom:-16px}
+
+.tooltip .arrow:after{content:"";position:absolute;left:20px;top:-20px;width:25px;height:25px;-webkit-box-shadow:6px 5px 9px -9px #000 ;-moz-box-shadow:6px 5px 9px -9px #000 ;box-shadow:6px 5px 9px -9px #000 ;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg)}
+
+.arrow-top .arrow{top:-16px}.arrow-top .arrow:after{top:6px}
+div.main {
+	z-index:-1;
+}
+
+div.whitebox{
+	background-color:white;
+border:medium;
+padding:15px;
+opacity:1 !important;
+text-align:left;
+width:30%;
+}
+
+div.dialogclass{
+z-index:0;
+width:100%;
+height:100%;
+position:absolute;
+left:0px;
+top:0px;
+z-index:0;
+opacity:0.9;
+text-align:center;
+background-color:#CCF;
+}
+
+div.dialogcenter{
+opacity:1;
+text-align:center;
+background-color:white;
+}
+
+span.tooltip[aria-hidden='true'] {
+   display: none;
+}
+span.tooltip[aria-hidden='false'] {
+   display:block ;
+
+}
+
+
+.hidden {display:none;}
+</style>
+
+<script type="text/javascript">
+var openTooltip = function() {
+    $("#tip1")
+        .removeAttr('aria-hidden')
+        .removeClass("hidden");
+}
+
+var closeTooltip = function() {
+    $("#tip1")
+        .attr("aria-hidden","true")
+        .addClass("hidden");
+}
+
+$(document).ready(function(){
+    closeTooltip();
+    
+    $("input#UserName")
+        .focus(openTooltip)
+        .mouseover(openTooltip)
+        .blur(closeTooltip)
+        .mouseleave(closeTooltip)
+        .keydown(function(ev) {
+            if (ev.which === 27)  {
+                closeTooltip();
+                ev.preventDefault();
+            }
+        });
+
+});
+</script>
+
+</head>
+
+<body>
+<div>
+
+  <p>Tab to the text box, or put your mouse on it.</p>
+
+  <p>
+  <label for="UserName" class="humana-bold">
+    Username
+  </label>
+  <input autocomplete="off" class="input-text" id="UserName" name="UserName" type="text" value="" aria-describedby="tip1" />
+  <span id="tip1" class="tooltip" role="tooltip" >Also known as User ID</span></p>
+</div>
+
+<h2 id="notes">Notes:</h2>
+
+<ul>
+  <li>The tooltip never receives focus. Focus stays on the textbox.</li>
+  <li>The tooltip widget can be shown via keyboard focus or by the <code>onmouse</code> event.</li>
+  <li>The tooltip widget can be hidden by removing focus from the text box or by moving the mouse off the textbox.</li>
+  <li>The tooltip widget can be hidden by pressing the Escape key.</li>
+  <li>The tooltip is only hidden via JavaScript and CSS selectors. If JavaScript is not available the tooltip is shown.</li>
+</ul>
+
+<p>For more best practice patterns see  <a href="http://www.w3.org/WAI/PF/aria-practices/#tooltip">making a tooltip.</a></p>
+
+<h2 id="how_we_made_the_tooltip">Step by Step: How We Made the Tooltip (Tutorial)</h2>
+
+<p>We will now walk through how we applied the five steps for creating an accessible widget using ARIA:</p>
+
+<ul>
+<li><strong>Step 1: Set the Roles</strong></li>
+<li><strong>Step 2: Set Relationships and Properties</strong></li>
+<li><strong>Step 3: Set Initial States</strong></li>
+<li><strong>Step 4: Apply State Changes</strong></li>
+<li><strong>Step 5: Manage Focus and Keyboard Accessibility</strong></li>
+</ul>
+
+<h3 id="set_the_roles">Step 1: Set the Roles</h3>
+
+<p>Our form uses HTML standard form controls so we do not need form control roles as well. The only thing that requires a role is the tooltip.</p>
+
+<div class="example">
+ <h3 class="good">Example</h3>
+ <pre><code>&lt;span id=&quot;tip1&quot; class=&quot;tooltip&quot; <span class="highlight">role=&quot;tooltip&quot;</span> &gt;Also known as User ID&lt;/span&gt;</code></pre>
+</div>
+
+<h3 id="set_relationships_and_properties">Step 2: Set Relationships and Properties</h3>
+
+<p>We want to make sure the structure, relationships between elements and groups, properties and labels are all clear in the code. The relationship between the tooltip and the form control is not clear from the DOM. We use <code>aria-describedby</code> to solve this type of problem.</p>
+
+<div class="example">
+ <h3 class="good" id="example_tooltip">Example</h3>
+ <pre><code>&lt;input class=&quot;input-text&quot; id=&quot;UserName&quot; name=&quot;UserName&quot; type=&quot;text&quot;
+ value=&quot;&quot; <span class="highlight">aria-describedby=&quot;tip1&quot;</span>&gt;</code></pre>
+</div>
+
+<p><strong>Note:</strong> It is always worth looking at any requirements, such as required states and supported states, for your roles before deciding what properties and states you need. </p>
+
+<h3 id="set_initial_states">Step 3: Set Initial States</h3>
+
+<p>A good rule of thumb is that elements that change how they look often have states that can change at the same time. The <code>tooltip</code> changes from being non-visible to visible. So we are going to use <code>aria-hidden</code> as our state.</p>
+
+<p>We will use CSS selectors to show and hide the <code>tooltip</code> based on the <code>aria-hidden</code> value. Now we will not need to change their CSS class in the code, only the value of <code>aria-hidden</code>.</p>
+
+<div class="example">
+ <h3 class="good" id="example_initial_states">Example</h3>
+ <p>In the CSS:</p>
+<pre><code>span[aria-hidden=&quot;true&quot;] {display:none;}
+span[aria-hidden=&quot;false&quot;] {display:block;}</code></pre>
+</div>
+
+<p>We are only going to set the initial state when the page loads. This will make the content degrade gracefully, and the <code>tooltip</code> to be open if scripts are not working. We will do this by setting <code>aria-hidden='true'</code>in the document ready function. This way if scripts are working the tooltip will be hidden, but if scripts are not supported the user will still get the content.</p>
+
+<div class="example">
+ <h3 class="good" id="example_set_state_on_load">Example</h3>
+ <pre><code>$(document).ready(function(){
+ $(&quot;#tip1&quot;).attr(&quot;aria-hidden&quot;,&quot;true&quot;);</code>....</pre>
+</div>
+
+<p><strong>A word about backward compatibility....</strong></p>
+
+<p>Unfortunately IE 9 does not support the CSS selectors above; however, IE 10 does support them. So to make this work with older browser, we add a class <code>hidden</code>:</p>
+
+<div class="example">
+ <h3 class="good" id="example_hidden">Example</h3>
+<pre><code>.hidden {display:none;}</code></pre>
+</div>
+
+<p>Then we add &quot;hidden&quot; to the class attribute in the HTML to hide the hidden items in older browsers.</p>
+
+<div class="example">
+ <h3 class="good" id="example_hidden_html">Example</h3>
+<pre><code>class=&quot;... hidden&quot;</code></pre>
+</div>
+
+<p><strong>In the script,</strong> whenever we set <code>aria-hidden=&quot;true&quot;</code> in the script, we also add the class <code>hidden</code> to the same selector:</p>
+
+<div class="example">
+ <h3 class="good" id="example_hidden_class">Example</h3>
+<pre><code>$(&quot;%tip1&quot;).addClass(&quot;hidden&quot;);</code></pre>
+</div>
+
+<p>We also remove it when we set <code>aria-hidden=&quot;false&quot;</code>:</p>
+
+<div class="example">
+ <h3 class="good" id="example_hidden_remove_class">Example</h3>
+<pre><code>$(&quot;#tip1&quot;).removeClass(&quot;hidden&quot;);</code></pre>
+</div>
+
+<p>This makes the script much more robust in older browsers.</p>
+
+<h3 id="apply_state_changes">Step 4: Apply State Changes</h3>
+
+<p>We discussed above that we are using the ARIA state of <code>aria-hidden</code> and we are using CSS selectors so that whenever <code>aria-hidden='true'</code> the tooltip will be hidden, and when <code>aria-hidden='false'</code> the message will be visible. </p>
+
+<p>In the code we have a function to change the values of <code>aria-hidden</code> when the tooltip should be visible.</p>
+
+<div class="example">
+ <h3 class="good" id="example_change_state">Example</h3>
+<pre><code>$(&quot;input#UserName&quot;).mouseover(function(){
+$(&quot;#tip1&quot;).attr(&quot;aria-hidden&quot;,&quot;false&quot;);
+}); </code></pre>
+</div>
+
+<p>Similarly we will set <code>aria-hidden='true'</code> when the mouseleave() event is triggered.</p>
+
+<p>For older browsers we also add <code>$(&quot;#tip1&quot;).addClass(&quot;hidden&quot;);</code> (see above).</p>
+
+<h3 id="focus_and_keyboard_accessibility">Step 5: Manage Focus and Keyboard Accessibility</h3>
+
+<p>Managing the focus for the tooltip is easy. The tooltip never receives focus. Focus stays on the textbox. The tooltip role is automatically read to the user and no response is required, there is no need to set focus.</p>
+
+<p>All the other controls are standard HTML controls and so the  focus  has been taken care of.
+</p>
+
+<p>Next, let's deal with the keyboard accessibility. First, we need to make sure the same functions are triggered by device independent events (such as <code>focus()</code> and <code>blur()</code> ) as for mouse events (such as <code>mouseover()</code>,  <code>mouseleave()</code> ). For example:</p>
+
+<div class="example">
+ <h3 class="good" id="example_focus">Example</h3>
+<pre><code>$(&quot;input#UserName&quot;).focus(function()
+$(&quot;#tip1&quot;).attr(&quot;aria-hidden&quot;,&quot;false&quot;);
+});</code></pre>
+</div>
+
+<p>For this design pattern, we also want the user to be able to close the tooltip using the Escape key.</p>
+
+<div class="example">
+ <h3 class="good" id="example_keydown">Example</h3>
+<pre><code>$(&quot;input#UserName&quot;).keydown(function(ev){
+if (ev.which ==27)  {
+$(&quot;#tip1&quot;).attr(&quot;aria-hidden&quot;,&quot;true&quot;);
+ev.preventDefault();
+return false;
+}
+});</code></pre>
+</div>
+</div>
+</body>
+</html>

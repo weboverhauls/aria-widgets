@@ -1,0 +1,96 @@
+.tabs-view #navlist {
+  padding: 3px 0px 0px;
+  margin: 0px;
+  border-bottom: 1px solid #778;
+}
+
+.tabs-view #navlist li {
+  list-style: none;
+  margin: 0px;
+  display: inline;
+}
+
+.tabs-view #navlist > li > a {
+  font-size: 18px;
+  padding: 3px 0.5em;
+  border: 1px solid #778;
+  border-bottom: none;
+  background: #DDE;
+  text-decoration: none;
+}
+
+.tabs-view #navlist .active a {
+  background: white;
+  border-bottom: 1px solid white;
+}
+.tabs-view #panels {
+  border: 1px solid;
+  border-top: none;
+}
+.tabs-view .panel {
+  display: none;
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+}
+.tabs-view .panel.current {
+  display: block !important;
+}
+
+#tab-container.tabs-view {
+  width: 85%;
+  margin: 0 auto;
+}
+
+/*ACCORDION VIEW*/
+.accordion-view #navlist {
+  padding: 3px 0px;
+}
+
+.accordion-view #navlist li {
+  display: block;
+  margin: 0px auto;
+  padding:0px;
+  position: relative;
+}
+.accordion-view #navlist > li > a {
+  font-size: 24px;
+  padding: 3px 0.5em;
+  border: 1px solid #778;
+  background: #DDE;
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.accordion-view #navlist .active a {
+  background: white;
+}
+
+.accordion-view #panels {
+  display: none;
+}
+
+.accordion-view .panel {
+  display: none;
+  width: 100%;
+  border: 1px solid;
+  box-sizing: border-box;
+  border-top: none;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.accordion-view .panel.current {
+  display: block;
+}
+#tab-container.accordion-view {
+  width: 85%;
+  margin: 0 auto;
+}
+.attributes .md {
+  background-color: #eee;
+  padding: 4px;
+  color: #000;
+}

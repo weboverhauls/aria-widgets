@@ -1,0 +1,55 @@
+.accordion ul {
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    list-style:none;
+    margin:0;
+    padding:0;
+    width:300px;
+}
+.accordion ul.accordionSubMenu {
+    display:none;
+}
+.accordion ul .here ul {
+    display:block;
+}
+.accordion li {
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+.accordion li .category {
+    background:#375898;
+    border:1px solid #fff;
+    color:#fff;
+    display:block;
+    padding:3px 6px;
+}
+.accordion li li {
+    background:#fff;
+    color:#375898;
+}
+.accordion li a {
+    border-bottom:1px dashed #375898;
+    color:#375898;
+    display:block;
+    padding:3px 5px 3px 20px;
+    text-decoration:none; 
+}
+.accordion li.last a {
+    border-bottom:none;
+}
+.accordion li .category:hover {
+    background:#4b6fb6;
+    color: #FFC;
+    cursor:pointer;
+}
+.accordion li a:hover {
+    background:#ffc;
+    cursor:pointer;
+}
+.expanded {
+    display: block;
+}
+.accordion li.self a {
+    background:#FFC;
+    color:#990000;
+}

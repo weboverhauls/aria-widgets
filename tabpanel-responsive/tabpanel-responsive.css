@@ -1,0 +1,320 @@
+.example {
+    margin: 50px 20px 30px 0px;
+    padding: 0px 20px 20px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: transparent none repeat scroll 0% 0%;
+}
+
+.tabWidgetContainer {
+	
+	padding: 20px;
+	border-radius: 10px;
+	border: 1px solid transparent;
+	width: 700px;
+max-width:90%;
+	height: 550px;
+	
+}
+
+.tabWidgetContainer2 {
+	
+	padding: 20px;
+	border-radius: 10px;
+	border: 1px solid transparent;
+	width: 700px;
+	height:550px;
+	position: absolute;
+	max-width:90%;
+	
+}
+.tablist {
+	list-type:none;
+	margin: 0 0 0 15px;
+	padding: 0;
+	position: absolute;
+
+}
+
+.tablist2 {
+	list-type:none;
+	margin: 0 0 0 0px;
+	padding: 0;
+	position: absolute;
+margin-right:20px;
+
+}
+.tablist li {
+	
+	width: 12em;
+	margin: 0px 5px 0 0px;
+	padding: 6px 9px 3px 9px;
+	list-style-type: none;
+	background: #eee;
+	border-bottom: 0.3em solid #d9d9d9;
+	border-left: none;
+	font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+
+	
+
+}
+
+.tablist2 li {
+	
+	width: 12em;
+	margin: 0px 5px 0 0px;
+	padding: 6px 9px 3px 9px;
+	list-style-type: none;
+	background: #eee;
+	border-bottom: 0.3em solid #d9d9d9;
+	border-left: none;
+	font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+	
+
+}
+.tablist li:hover {
+	cursor:pointer;
+}
+
+.tablist2 li:hover {
+	cursor:pointer;
+}
+.tablist li:focus {
+	outline: 2px solid #8cc63f;
+	outline-offset: 2px;
+}
+
+.tablist2 li:focus {
+	outline: 2px solid #8cc63f;
+	outline-offset: 2px;
+}
+.tablist li.active {
+	border-top: none;
+	border-right: none;
+	border-bottom: 0.5em solid #2E426A;
+	position: relative;
+	padding: 7px 9px 4px 9px;
+	font-weight: bold;
+	background: #fff;
+	font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+	
+}
+
+.tablist2 li.active {
+	border-top: none;
+	border-right: none;
+	border-bottom: 0.5em solid #2E426A;
+	position: relative;
+	padding: 7px 9px 4px 9px;
+	font-weight: bold;
+	background: #fff;
+	font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+	
+}
+#main-container {
+	
+	z-index: 99;
+	width: 650px;
+max-width: 90%;
+	background: transparent;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: #ffffff 0 0px 3px;
+	height:500px;
+}
+
+#main-container2 {
+	z-index: 99;
+	width: 700px;
+	background: transparent;
+	padding: 35px;
+	border-radius: 10px;
+	box-shadow: transparent 0 0px 3px;
+	height:500px;
+	max-width: 90%;
+}
+.tabpanel.inactive {
+	display: none;
+}
+
+.tabpanel label.text {
+	clear: both;
+	width: 160px;
+	float: left;
+	text-align: right;
+	padding: 0 2px 0 0;
+}
+.tabpanel input[type='text'] {
+	width: 200px;
+}
+.tabpanel input[type='text'].long {
+	width: 300px;
+}
+.tabpanel input[type='text'].short {
+	width: 100px;
+}
+.tabpanel fieldset {
+	border-radius: 10px;
+	border: 1px solid #ccc;
+}
+.save {
+	text-align: center;
+	margin: 30px auto 5px auto;
+}
+.updating {
+	display: none;
+	text-align: center;
+}
+.updated {
+	display: none;
+	text-align: center;
+	margin: 0 auto;
+	width: 50%;
+	padding: 10px;
+	background: #fef6d6;
+	color: #903;
+	font-weight: bold;
+	border: 2px solid #903;
+	border-radius: 10px;
+}
+
+div#blur img, div#blurwithcontrast img, div#cataracts img, div#diabetic img, div#glaucoma img, div#hemianopia img, div#macular img, div#retinal img {
+	float: right;
+	position: relative;
+	z-index: 99;
+margin-bottom: 20px;
+margin-right: -50px;
+max-width: 100%;
+	
+}
+
+div#enlargedtext img, div#enlargedyellowtext img, div#enlargedwhitetext img, div#enlargedblacktext img {
+	float: right;
+	position: relative;
+	z-index: 99;
+margin-bottom: 20px;
+margin-right: -50px;
+max-width: 100%;
+	
+}
+
+div.caption p {
+	float: left;
+	text-align: left;
+	font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+	color: #484641;
+	border-top: 1px solid #2E426A;
+	max-width: 100%;
+	
+}
+
+div.image div {
+	text-align: left;
+	font-family: calibri;
+	
+}
+
+div#main-container p#placeholder1 {
+	float: left;
+	margin-left: 202px;
+	border: 1px solid transparent;
+	padding: 115px 115px 115px 115px;
+	position: absolute;
+	z-index: 2;
+	font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+	color: #484641;
+	
+}
+
+div#main-container2 p#placeholder2 {
+	float: left;
+	margin-left: 202px;
+	border: 1px solid transparent;
+	padding: 80px 115px 80px 80px;
+	position: absolute;
+	z-index: 2;
+	font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+	color: #484641;
+	
+}
+
+@media only screen and (max-width: 768px) {
+	
+	.tablist {
+		position: static;
+		display:block;
+
+	}
+	
+	.tablist2 {
+		position: static;
+		display:block;
+
+	}
+	
+	.tablist li {
+		display: inline-block;
+		padding: 0;
+		margin: 0;
+		border-bottom: 1px solid #d9d9d9;
+
+	}
+	
+	.tablist2 li {
+		display: inline-block;
+		padding: 0;
+		margin: 0;
+		border-bottom: 1px solid #d9d9d9;
+
+	}
+	
+	.tablist li.active {
+	border-top: none;
+	border-right: none;
+	border-bottom: 2px solid #2E426A;
+	position: relative;
+	padding: 0;
+	font-weight: bold;
+	background: #fff;
+	font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+	
+}
+
+.tablist2 li.active {
+	border-top: none;
+	border-right: none;
+	border-bottom: 2px solid #2E426A;
+	position: relative;
+	padding: 0;
+	font-weight: bold;
+	background: #fff;
+	font-family: "Open Sans","Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+	
+}
+
+
+	
+	div#blur img, div#blurwithcontrast img, div#cataracts img, div#diabetic img, div#glaucoma img, div#hemianopia img, div#macular img, div#retinal img {
+	float: none;
+	position: relative;
+	z-index: 99;
+	margin-top: 0;
+	margin-bottom: 0;
+	max-width: 100%;
+	
+	}
+	
+	div#enlargedtext img, div#enlargedwhitetext img, div#enlargedyellowtext img, div#enlargedblacktext img {
+	float: none;
+	position: relative;
+	z-index: 99;
+	margin-top: 100px;
+	margin-bottom: 0;
+	max-width: 100%;
+	max-height:120%;
+	
+	}
+	
+	
+	
+}

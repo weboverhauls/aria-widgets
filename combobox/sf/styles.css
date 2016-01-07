@@ -1,0 +1,90 @@
+#example-form {
+    width: 450px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 3px solid #ccc;
+    border-radius: 15px;
+  background-color:#fff;
+}
+
+.field {
+    display: inline-block;
+    position: relative;
+}
+
+.field label {
+    display: inline-block;
+    width: 100px;
+}
+#example-form input[type=text] {
+  width:275px;
+  font-size:14px;
+}
+
+#down-arrow {
+    position: absolute;
+    top: 6px;
+    right: 5px;
+}
+
+#state-list {
+    display: none;
+    position: absolute;
+    width: 277px;
+    outline: 1px solid #ccc;
+    right: 0;
+    background-color: #fff;
+    max-height: 200px;
+    overflow: scroll;
+}
+
+
+#state-list ul {
+    margin: 0;
+    padding: 0;
+}
+
+#state-list ul li {
+    list-style-type: none;
+    padding: 4px;
+    background-color: #eee;
+    margin: 5px;
+    cursor: pointer;
+    outline: 0;
+  border-radius:5px;
+}
+
+#state-list ul li:hover,
+#state-list ul li.active {
+    background-color: #fdf6e7;
+  background-color: #646464;
+  color:#fff; 
+  cursor:pointer;
+}
+
+#state {
+  cursor:pointer;
+}
+
+.btn-submit {
+    margin: 10px auto;
+    display: block;
+}
+
+.md {
+    background-color: #eee;
+    padding: 3px;
+    color: #000;
+}
+
+.fa-chevron-down, 
+.fa-chevron-up {
+  position:relative;
+  top:-5px;
+  right:-3px; 
+}
+
+.fa-chevron-down:hover, 
+.fa-chevron-up:hover {
+  cursor:pointer;
+}

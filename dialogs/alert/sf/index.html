@@ -1,0 +1,12 @@
+<div id="main-content">
+  <!-- html code used to trigger the dialog -->
+  <button type="button" id="alert-trigger">Display Dialog</button>
+</div>
+
+<!-- container for the alert dialog, must have role="alertdialog" -->
+<div id="continue-dialog" role="alertdialog" tabindex="-1" aria-labelledby="admessagehead1" aria-describedby="admessagebody1">
+  <h2 id="admessagehead1">Warning</h2>
+  <!-- older specs recommend adding role="document" to this message, latest specification drafts do not, and NVDA will not work if role="document" is applied -->
+  <p id="admessagebody1">To continue you must ensure you have received your confirmation number</p>
+  <button type="button" id="close-char-modal">Close</button>
+</div>

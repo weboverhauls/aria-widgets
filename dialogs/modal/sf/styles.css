@@ -1,0 +1,79 @@
+body { 
+	margin:0;
+	padding:0;
+	}
+
+#continue-dialog {
+  display: none;
+  position: absolute;
+  min-width: 200px;
+  margin: 0 auto;
+  text-align: center;
+  top: 70px;
+  z-index: 2000;
+  background-color: #fff;
+  border: 2px solid  #666;
+  border-radius:5px;
+  position:fixed;
+	width: 25%;
+	min-width: 300px;
+	left: 37%;
+  margin:auto;
+  top:20%;
+  line-height:1.5em;
+}
+
+#continue-dialog h2 {
+  margin: 0;
+  padding: 5px;
+  background-color: #eee;
+  border-radius: 5px 5px 0 0;
+}
+
+#admessagebody1 {
+	padding:5px;
+	display:inline-block;
+}
+
+#dialog-inner-wrapper {
+	padding:5px;
+
+}
+
+input[type=text] {
+	min-width:200px;
+}
+
+#success-bin {
+  font-size: 28px;
+  padding: 10px;
+  text-align: center;
+  border: 2px solid green;
+}
+
+#continue-close {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+}
+
+#form-actions {
+	padding:10px 0;	
+}
+
+.error {
+  display: none;
+  color: #666;
+  font-size: 15px;
+  font-style: italic;
+  text-align: center;
+}
+
+#temporaryOverlay {
+	position:absolute;
+	z-index:100;
+	background-color:#000;
+	opacity:0.2;
+	width:100%;
+	height:100%;
+}

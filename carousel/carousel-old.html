@@ -1,0 +1,216 @@
+<div id="c-container">
+
+<div class="carousel" id="carousel" aria-live="polite">
+<ul class="carousel-content">
+
+<li aria-hidden="false" class="carousel-item"  id="item-1" >
+	
+	<h2 class="carousel-heading"><img src="images/one.jpg" alt="1" class= "carousel-image" />Item 1  - for your carousel</h2>
+	<div><p>Your carousel can talk about user needs and the products and services that may help them take the first step toward lifelong well-being.</p></div>
+</li>
+
+<li aria-hidden="true" class="carousel-item hidden"  id="item-2" >
+	
+	<h2 class="carousel-heading"><img src="images/two.jpg" alt="2" class="carousel-imageleft" />Item 2 <span class="block">for your carousel</span></h2>
+	<div><p>Your carousel can talk about offering and issues to help your market. It can also show news items. </p></div>
+</li>
+
+<li aria-hidden="true" class="carousel-item hidden"  id="item-3" >
+	
+	<h2 class="carousel-heading"><img src="images/three.jpg" alt="3" class="carousel-image" />Item 3 <span class="block">for your carousel</span></h2>
+	<div><p>Your carousel can show pictures and text that help you brand your website ad company.</p></div>
+</li>
+</ul></div>
+
+<fieldset aria-label="carousel buttons" class="carousel-buttons" aria-controls="carousel">
+	<button value="pause" id="pause" aria-label="pause" class="carousel-button">||</button>    <button value="go" id="go" class="carousel-button">Play</button>
+    <button value="prev" aria-label="previous" id="prev" class="carousel-button"><<</button>
+    <button value="next" id="next" aria-label="next" class="carousel-button">>></button>
+</fieldset>
+</div>
+
+
+<h2 id="notes">Notes:</h2>
+
+<p>The carousel buttons can be activated by the mouse or by the enter key.</p>
+
+<ul>
+  <li>Each image needs to have  valid <code>alt</code> text.</li>
+  <li>This example uses <code>aria-hidden</code> on the carousel items that are not shown.</li>
+  <li>The carousel wrapper has <code>aria-live=&quot;polite&quot;</code></li>
+  <li>Buttons are keyboard accessible, and <code>aria-label</code> is used to clarify the symbols.</li>
+</ul>
+
+<h2 id="how_we_made_the_carousel_accessible">Step by Step: How We Made the Carousel Accessible</h2>
+
+<p>We will now walk through how we applied the five steps for creating an accessible widget using ARIA:</p>
+
+<ul>
+<li><strong>Step 1: Set the Roles</strong></li>
+<li><strong>Step 2: Set Relationships and Properties</strong></li>
+<li><strong>Step 3: Set Initial States</strong></li>
+<li><strong>Step 4: Apply State Changes</strong></li>
+<li><strong>Step 5: Manage Focus and Keyboard Accessibility</strong></li>
+</ul>
+
+<h3 id="set_the_roles">Step 1: Set the Roles.</h3>
+
+<p>Our buttons are HTML standard form controls so we do not need form control roles as well. The carousel items are <code>list</code> items, which is accurate. However the carousel container is a live region, so although we do not set its role we will set <code>aria-live property</code> when we get there.</p>
+
+<h3 id="set_relationships_and_properties">Step 2: Set Relationships and Properties</h3>
+
+<p>We want to make sure the structure, relationships between elements and groups, properties and labels are all clear in the code. They can be clear from the standard HTML code, or using ARIA.</p>
+
+<p>First, note the<strong> structure.</strong></p>
+
+<ul>
+  <li>The carousel items are <code>list</code> items in the same list, so the fact that they belong together is implied in the code or DOM.</li>
+  <li>The buttons are inside a <code>fieldset</code> - so that shows that they are a group.</li>
+</ul>
+
+<p>So, the the groups are clear.</p>
+
+<p>Now lets look at the <strong>relationships between groups.</strong></p>
+
+<ul>
+  <li>The buttons control the carousel. That is not clear without ARIA. So we add <code>aria-controls=&quot;carousel&quot;.</code></li>
+</ul>
+
+<p>What about<strong> properties?</strong></p>
+
+<p>The content of the carousel changes so we will use <code>aria-live=&quot;polite&quot;</code>. This means that the user will be read the new content at the next convenient point. However the user will not be interrupted in the middle of a task.</p>
+
+<p>Quick reminder.... </p>
+
+  <ul>
+    <li><strong><code>aria-live=&quot;off&quot;</code></strong>: This is the default value that indicates that a region is not live, and changes will not be announced. </li>
+    <li><strong><code>aria-live=&quot;polite&quot;</code></strong>: The update should be announced at the next graceful interval, such as when the user stops typing. </li>
+    <li><strong><code>aria-live=&quot;assertive&quot;</code></strong>:  The update is announced to the user immediately. As this is obtrusive, a value of assertive should only be used when the update is urgent such as a session time out</li>
+  </ul>
+
+<p><strong>And labels</strong>?</p>
+
+<p>Looking at the buttons' <code>fieldset</code> &mdash; it is clear visually that they are buttons for the carousel, but they do not have a <code>legend</code>. So we use <code>aria-label=&quot;carousel buttons&quot;</code> to give them a label for screen readers.</p>
+
+<p>The buttons for next, previous and pause used symbols that made sense visually but do not make sense when read - so they also needed a labels. </p>
+
+<p>Altogether the code for the buttons looked like this:</p>
+
+<div class="example">
+ <h3 class="good" id="example_carousel_buttons">Example</h3>
+<pre><code>&lt;fieldset <span class="highlight">aria-label=&quot;carousel buttons&quot; </span>class=&quot;carousel-buttons&quot; aria-controls=&quot;carousel&quot;&gt;
+&lt;button value=&quot;pause&quot; id=&quot;pause&quot; <span class="highlight">aria-label=&quot;pause&quot;</span> class=&quot;carousel-button&quot;&gt;||&lt;/button&gt;
+&lt;button value=&quot;go&quot; id=&quot;go&quot; class=&quot;carousel-button&quot;&gt;play&lt;/button&gt;
+&lt;button value=&quot;prev&quot; <span class="highlight">aria-label=&quot;previous&quot;</span> id=&quot;prev&quot; class=&quot;carousel-button&quot;&gt;&lt;&lt;&lt;/button&gt;
+&lt;button value=&quot;next&quot; id=&quot;next&quot; <span class="highlight">aria-label=&quot;next&quot;</span> class=&quot;carousel-button&quot;&gt;&gt;&gt;&lt;/button&gt;
+&lt;/fieldset&gt;</code></pre>
+</div>
+
+<h3 id="set_intial_states">Step 3: Set Initial States</h3>
+
+<p>A good rule of thumb is that elements that change how they look often have states that can change at the same time.</p>
+
+<p>The carousel items change how they look. They go from being visible to invisible. So we are going to use <code>aria-hidden=&quot;false&quot;</code> on the carousel items that is shown and <code>aria-hidden=&quot;true&quot;</code> on the carousel items that are hidden.</p>
+
+<div class="example">
+ <h3 class="good" id="example_intial_state">Example</h3>
+<pre><code>&lt;li <span class="highlight">aria-hidden=&quot;true&quot;</span> class=&quot;carousel-item&quot;  id=&quot;item-3&quot; &gt;
+&lt;img src=&quot;three.jpg&quot; alt=&quot;3&quot; class=&quot;carousel-image&quot; /&gt;
+&lt;h2 class=&quot;carousel-heading&quot;&gt;Item 3 &lt;span class=&quot;block&quot;&gt;for your carousel&lt;/span&gt;&lt;/h2&gt;
+&lt;div&gt;&lt;p&gt;Your carousel can show pictures and text
+that help you brand your website ad company.&lt;/p&gt;&lt;/div&gt;
+&lt;/li&gt; </code></pre>
+</div>
+
+<p><strong>Note:</strong> This item has a header and an image in it. As per accessibility best practice the heading is marked as a heading and the image has good alt text.</p>
+
+<p>We also use CSS selectors, to show and hide the carousel items based on the <code>aria-hidden</code> value. Now we do not need to change their CSS class in the code, only the value of <code>aria-hidden</code>.</p>
+
+<div class="example">
+ <h3 class="good" id="example_css_selectors">Example</h3>
+<pre><code>li[aria-hidden='true'] {
+display: none;
+}
+li[aria-hidden='false'] {
+display:block ;
+}</code></pre>
+</div>
+
+<p><strong>A word about backward compatibility....</strong></p>
+
+<p>Unfortunately IE 9 does not support the CSS selectors above; however, IE 10 does support them. So to make this work with older browser, we add a class <code>hidden</code>:</p>
+
+<div class="example">
+ <h3 class="good" id="example_hidden">Example</h3>
+<pre><code>.hidden {display:none;}</code></pre>
+</div>
+
+<p>Then we add &quot;hidden&quot; to the class attribute in the HTML to hide the hidden items in older browsers.</p>
+
+<div class="example">
+ <h3 class="good" id="example_hidden_compatibility">Example</h3>
+<pre><code>class = &quot;... hidden&quot;</code></pre>
+</div>
+
+<h3 id="set_changes_in_state">Step 4: Set Changes in State</h3>
+
+<p>We discussed above that the carousel items use the ARIA state of <code>aria-hidden</code>, and we are using CSS selectors so that whenever <code>aria-hidden='true'</code> the item will be hidden and when <code>aria-hidden='false'</code> the item will be visible.</p>
+
+<p>In the code we have a function to switch slides &mdash; it will hide the old carousel item and show the new carousel item (variable slide) by changing the values of <code>aria-hidden</code>.</p>
+
+<div class="example">
+ <h3 class="good" id="example_change_state">Example</h3>
+<pre><code>$(&quot;li.carousel-item&quot;).attr(&quot;aria-hidden&quot;,&quot;true&quot;);
+....
+$(&quot;li.carousel-item:eq(&quot;+slide+&quot;)&quot;).attr(&quot;aria-hidden&quot;,&quot;false&quot;);</code></pre>
+</div>
+
+<p><strong>For backward compatibility,</strong> whenever we set <code>aria-hidden = &quot;true&quot;</code> in the script, we also add the class <code>hidden</code> to the same selector:</p>
+
+<div class="example">
+ <h3 class="good" id="example_change_state_compatibility">Example</h3>
+<pre><code>$(&quot;....&quot;).addClass(&quot;hidden&quot;);</code></pre>
+</div>
+
+<p>We also remove it when we set <code>aria-hidden=&quot;false&quot;</code>:</p>
+
+<div class="example">
+ <h3 class="good" id="example_remove_class">Example</h3>
+<pre><code>$(&quot;...&quot;).removeClass(&quot;hidden&quot;);</code></pre>
+</div>
+
+<p>This makes the script much more robust in older browsers.</p>
+
+<h3 id="manage_focus_and_keyboard_accessibility">Step 5: Manage Focus and Keyboard Accessibility</h3>
+
+<p>We do need to make sure our jQuery selectors are device independent. In the code we have used mouse events such as <code>&quot;click()&quot;</code> to trigger the button function  such as : <code>&quot;$(&quot;button#next&quot;).click(function()&quot;</code>. One potential problem is that the focus might leave the button after clicking it. To avoid the loss of focus, we add a line to each of the click events to return the focus to the button. For the &quot;Pause&quot; button, for example, the code is <code>$('button#pause).focus();</code>. Here is the code in a larger context:</p>
+<div class="example">
+<h3 class="good" id="example_focus">Example</h3>
+
+<pre><code></code><code>$("button#pause").click(function() {
+    myVar=window.clearInterval(myVar);
+    <span class="highlight">$('button#pause').focus();</span>
+    ev.preventDefault();
+    return (false);
+});</code></pre>
+</div>
+<p>We need to add device independent events as well for people who can not use a mouse.</p>
+
+<p>We use a single function so that the keypress event will trigger the click event on all the buttons. Here it is:</p>
+
+<div class="example">
+ <h3 class="good" id="example_keyboard_focus">Example</h3>
+<pre><code>$(&quot;button&quot;).keypress(function(ev) {
+if (ev.which ==13)  {
+$(this).click();
+ev.preventDefault();
+ }
+});</code></pre>
+</div>
+
+<p>That will work on all button elements. If you have other tags that are clickable using jQuery you will need to add their selector to the function. </p>
+
+<p>Note the use of <code>preventDefault()</code> after setting the  focus. This will prevent an extra shift-tab from occurring. <code>PreventDefault()</code> ensures that the default action  is not executed. You can use a jQuery return false, but that will also ensure that a <code>stopPropagation()</code> is executed - prohibiting parent elements from  receiving these events as well. </p>
+
+</div>
+</div>

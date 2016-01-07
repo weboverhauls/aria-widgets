@@ -1,0 +1,36 @@
+<div id="dialog_container">
+  <div id="bin" role="dialog" tabindex="-1" aria-describedby="error-head">Testing</div>
+</div>
+<form onsubmit="return false;">
+  <h2 class="fundage">Transfer Funds</h2>
+  <p class="side-note">All fields are required</p>
+  <div class="fielder">
+    <label for="account-number">Account Number:</label>
+    <input type="text" id="account-number" aria-required="true">
+  </div>
+  <div class="fielder">
+    <label for="amount">Amount ($):</label>
+    <input type="text" id="amount" aria-describedby="helper" aria-required="true">
+    <div id="helper">Amounts should be in US or Canadian Dollars</div>
+  </div>
+  <div class="fielder">
+    <label for="source-account">Source Account:</label>
+    <select id="source-account" aria-required="true">
+      <option value="0">Select Account</option>
+      <option>Checking</option>
+      <option>Savings</option>
+      <option>Credit Card ending in 1234</option>
+    </select>
+  </div>
+  <div class="fielder">
+    <label for="destination-account">Destination Account:</label>
+    <select id="destination-account" aria-required="true">
+      <option value="0">Select Account</option>
+      <option>Checking</option>
+      <option>Savings</option>
+      <option>Credit Card ending in 1234</option>
+    </select>
+  </div>
+  <button type="submit" id="submit-button">Submit</button>
+</form>
+<div id="success-bin"></div>

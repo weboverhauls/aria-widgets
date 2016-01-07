@@ -1,0 +1,37 @@
+#social-toolbar {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#social-toolbar ul {
+  margin: 0;
+  padding: 0;
+}
+
+#social-toolbar li {
+  display: inline-block;
+}
+
+#social-toolbar button {
+  font-size: 28px;
+  background-color: #00539B;
+  color: #fff;
+  border: none;
+}
+
+#social-toolbar button:focus,
+#social-toolbar button:hover {
+  background-color: #fff;
+  color: #00539B;
+  outline: 2px solid #00539B;
+}
+
+.clipper {
+  position: absolute;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

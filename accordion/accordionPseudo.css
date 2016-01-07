@@ -1,0 +1,95 @@
+nav.accordionPseudo {
+    width: 330px;
+    float: left;
+    padding: 5px !important;
+    font-size: 14px;
+    border-radius: 5px;
+    box-shadow: 0 0 4px #b2b2b2;
+}
+
+.accordionPseudo ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.accordionPseudo li {
+    list-style: none;
+}
+
+.accordionPseudo ul ul {
+    display: none;
+}
+
+.accordionPseudo ul .here ul {
+    display: block;
+}
+
+.accordionPseudo li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.accordionPseudo li .category {
+    display: block;
+	background: #375898 url("/assets/images/template/dequeUniversity/triangle-right-white12.png") 6px center no-repeat !important;	
+    color: #fff;
+    padding: 3px 6px 3px 25px;
+    border: 1px solid #fff;
+}
+
+.accordionPseudo li li {
+    background: #fff;
+    color: #375898;
+}
+
+.accordionPseudo li a {
+    display: block;
+    padding: 3px 5px 3px 20px;
+    text-decoration: none;
+    border-bottom: 1px dashed #b4c3e1;
+    color: #375898;
+    background-image: none !important;
+}
+
+.accordionPseudo li.last a {
+    border-bottom: none;
+}
+
+.accordionPseudo li .category:hover {
+    cursor: pointer;
+    color: #FFC;
+    background: #4b6fb6;
+}
+
+.accordionPseudo li a:hover {
+    cursor: pointer;
+    background: #ffc;
+}
+
+.accordionPseudo li.self a {
+    background: #FFC;
+    color: #990000;
+}
+
+.clear {
+    clear: both;
+}
+
+.accordionPseudo ul ul.expanded {
+    display: block;
+}
+
+.accordionPseudo li.category {
+}
+
+.accordionPseudo li .category[aria-expanded="true"] {
+	background: #375898 url("/assets/images/template/dequeUniversity/triangle-down-white12.png") 6px center no-repeat !important;	
+}
+
+.accordionPseudo li .category:focus,
+.accordionPseudo li .category:active {
+	outline:#8cc63f 2px solid !important;
+	background-color: #00274d !important;
+}

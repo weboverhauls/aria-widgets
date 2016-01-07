@@ -1,0 +1,17 @@
+#ajaxContent3 .container {
+	text-align: center;
+	background-color: #fff;
+	border-radius: 20px;
+	border: 1px solid #eee;
+	padding: 40px;
+}
+
+#ajaxContent3update p {
+	background: #FFC;
+	padding: 20px;
+	width: 50%;
+	margin: 20px auto;
+	border: 2px solid #990000;
+	border-radius: 20px;
+	text-align: center;
+}

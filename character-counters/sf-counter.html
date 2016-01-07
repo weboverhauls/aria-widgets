@@ -1,0 +1,53 @@
+    <h2>Implementation notes</h2>
+    <ul>
+      <li>character counter info is connected with textarea input using
+      aria-describedby</li>
+
+      <li>at 70 characters remaining we add aria-live="polite" and
+      aria-atomic="true"</li>
+      <li>at 60 chars remaining we set aria-atomic="false"</li>
+      <li>at 20 characters remaining we set aria-live="assertive" and
+      aria-atomic="true"</li>
+      <li>at 0 characters an alertdialog pops up telling user that character
+      limit has been reached</li>
+      <li>Attributes used:
+        <ul>
+          <li><span class="md">aria-describedby="chars-remaining"</span> (On the textarea pointing to the id of the characters remaining container)</li>
+          <li><span class="md">aria-live</span> (On the characters remaining element)</li>
+          <li><span class="md">aria-atomic</span> (On the characters remaining element)</li>
+          <li><span class="md">aria-assertive</span> (On the characters remaining element)</li>
+          <li><span class="md">role="alertdialog"</span> (On the alert dialog element)</li>
+          <li><span class="md">aria-labelledby="admessagehead1"</span> (On the alert dialog element)</li>
+          <li><span class="md">aria-describedby="admessagebody1"</span> (On the alert dialog element)</li>
+        </ul>
+      </li>
+  </ul>
+    <form method="GET" id="example-form">
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="text">
+      </div>
+      <div class="field">
+        <label for="subject">Subject:</label>
+        <input id="subject" type="text">
+      </div>
+      <div class="field">
+        <label for="message">Your Message:</label>
+        <textarea id="message" rows="10" cols="40" aria-describedby="chars-remaining"></textarea>
+        <div id="chars-remaining">
+          <span id="live-region-text" aria-live="polite">
+            <span class="count">150</span> characters remaining
+          </span>
+          of 150 characters
+        </div>
+        <div>
+          <button type="button">Submit</button>
+        </div>
+      </div>
+    </form>
+    <div id="zero-characters" tabindex="-1" role="alertdialog" aria-labelledby="admessagehead1" aria-describedby="admessagebody1">
+      <h2 id="admessagehead1">Maximum Characters Exceeded</h2>
+      <p id="admessagebody1">Please limit your message to 150 characters.  Additional characters will not be entered.</p>
+      <a href="#" id="close-char-modal">Close</a>
+    </div>
+    <script src="/assets/js/aria/character-counters/sf-counter.js"></script>

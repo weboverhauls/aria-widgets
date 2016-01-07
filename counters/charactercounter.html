@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Character Counter Example</title>
+        <script src="../saveform/jquery.js"></script>
+    </head>
+
+    <body>
+      <h1>Character Counter Example</h1>
+      <div>
+        <h2>Accessible Version</h2>
+        <label>
+          Counting form field: <br>
+          <textarea id="counterTextArea" name="char_count" style="width:40em;height:10em;" maxlength="2500"></textarea><br>
+          <span id="counterRemaining"><span id="counterNumber">2500</span> characters remaining.</span>
+          <div class="alerts" aria-hidden="false " id="counterLive" aria-live="assertive"></div>
+        </label>
+      </div>
+      <div>
+        <h2>Regular Version</h2>
+        <label>
+          Counting form field: <br>
+          <textarea id="counterTextArea_alt" name="char_count" style="width:40em;height:10em;" maxlength="2500"></textarea><br>
+          <div class="alerts" aria-hidden="false " id="counterLive_alt" aria-live="polite">
+            <span id="counterRemaining_alt"><span id="counterNumber_alt">2500</span> characters remaining.</span>
+          </div>
+        </label>
+      </div>
+      <script>
+        var timer;
+        $('#counterTextArea').on('input propertychange', counterLiveUpdate);
+        function counterLiveUpdate() {
+          $('#counterNumber').text(2500 - $('#counterTextArea').val().length);
+          clearTimeout(timer);
+          timer = setTimeout( function() {
+            $('#counterLive').text((2500 - $('#counterTextArea').val().length) + ' characters remaining.');
+          }, 2000);
+        }
+        $('#counterTextArea_alt').on('input propertychange', counterLiveUpdate_alt);
+        function counterLiveUpdate_alt() {
+          $('#counterNumber_alt').text(2500 - $('#counterTextArea_alt').val().length);
+        }
+      </script>
+
+    </body>
+</html>

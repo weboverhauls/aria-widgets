@@ -1,0 +1,20 @@
+#continue-dialog {
+  display: none;
+  position: absolute;
+  width: 250px;
+  margin: 0 auto;
+  text-align: center;
+  top: 70px;
+  z-index: 15;
+  background-color: #fff;
+  border: 5px solid #ccc;
+}
+
+#continue-dialog h2 {
+  margin: 0;
+  padding-top: 0;
+  background-color: #ccc;
+}
+:focus {
+  outline: 2px solid;
+}

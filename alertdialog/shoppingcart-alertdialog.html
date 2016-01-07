@@ -1,0 +1,151 @@
+<p>An alert is one kind of assertive <code>aria-live</code> region, and a slightly more urgent form of an status, which is a polite <code>aria-live</code> region. It is an important message, usually with time-sensitive information, that is read by the screen reader as soon as content is inserted into the alert element. The alert does not move the user's keyboard focus because there are usually no interactive components in an alert message, but the JavaScript programmer may choose to send the focus to the alert message, if appropriate. </p>
+<p>By way of contrast, an <a href="[[~874]]">alert dialog</a> requires some user interaction, so the focus needs to go to the <a href="[[~874]]">alert dialog</a>. </p>
+<p>Purposes of an alert can include:</p>
+<dl>
+  <dt>Information  alerts </dt>
+  <dd>Note: you could use status instead of alert for less critical messages.</dd>
+  <dt>Error  alerts </dt>
+  <dd>When the user or the system does something wrong</dd>
+  <dt>Warning  alerts</dt>
+  <dd>To prevent the user from making bad choices, or to at least be sure the user is aware of the consequence of an action</dd>
+  <dt>Success  alerts </dt>
+  <dd>To let users know that their actions were processed correctly</dd>
+</dl>
+
+<div class="example">
+<h3 class="good">Simple <code>alert</code> Example</h3>
+<p>When users click on this button, an alert message will appear below the button, and screen readers will read the alert message text. The focus will not move from the button.</p>
+<form name="savePrefsForm" method="post" action="#">
+  <button id="savePrefs">Save my preferences</button>
+  <div id="savePrefsMsg" class="msg" role="alert"></div>
+</form>
+
+<script>
+$("#savePrefs").click(function() {
+$("#savePrefsMsg").addClass("alert").text("Your preferences have been saved.");
+return false;
+});
+</script>
+
+<h4 class="neutral">HTML Markup:</h4>
+<div><code class="block"><br>
+  &lt;button id=&quot;savePrefs&quot;&gt;Save my preferences&lt;/button&gt;<br>
+  &lt;div id=&quot;savePrefsMsg&quot; class=&quot;msg&quot; <span class="highlight">role=&quot;alert&quot;</span>&gt;&lt;/div&gt;<br>
+</code></div>
+  
+ <h4 class="neutral">JavaScript Code:</h4> 
+  <div><code class="block"><br>
+    &lt;script&gt;<br>
+    $(&quot;#savePrefs&quot;).click(function() {<br>
+    $(&quot;#savePrefsMsg&quot;).addClass(&quot;alert&quot;).text(&quot;Your preferences have been saved.&quot;);<br>
+    return false;<br>
+    });<br>
+    &lt;/script&gt;</code></div>
+    
+    <h4 class="neutral">Styles</h4>
+    <pre><code>
+.alert {
+    margin:20px 40px;
+    padding:20px;
+    border:2px solid #990000;
+    background:#fefee7;
+    border-radius:10px
+} </code></pre>
+</div>
+
+
+<div class="example">
+  <h3 class="good">Example: Shopping Cart Update with <code>alert</code> and <code>alertdialog</code></h3>
+<p>When you change options (update, delete, or save for later) in the shopping cart below, an alert message displays below the table, and is read by the screen reader. The keyboard focus does not go to the alert message. The delete button is slightly different, though. Instead of only activating the alert below the table, the delete button brings up a popup modal alert dialog and forces users to either confirm that they want to delete, or cancel. The keyboard focus goes to this modal alertdialog. Once users make this selection, the focus returns to the original delete button and the alert message below the table is updated. </p>
+
+<table>
+<caption>
+Shopping Cart 
+</caption>
+<thead>
+  <tr>
+    <th scope="col">Item</th>
+    <th scope="col">Quantity</th>
+    <th scope="col" class="priceCell">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><label for="baldinosSelect">The Great Baldino's Bubble Bath (set of 2)</label></td>
+    <td><select name="baldinosSelect" id="baldinosSelect">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      </select>
+      <button>Update</button>
+      <button>Delete</button>
+      <button>Save for Later</button></td>
+    <td class="priceCell">$14.50</td>
+    </tr>
+  <tr>
+    <td><label for="grapeSelect">Grape Gravy Sticks</label></td>
+    <td><select name="grapeSelect" id="grapeSelect">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      </select>
+      <button>Update</button>
+      <button>Delete</button>
+      <button>Save for Later</button></td>
+    <td class="priceCell">$9.59</td>
+    </tr>
+  <tr>
+    <td><label for="greasySelect">Rory's Rose Hips Paste for Greasy Hair</label></td>
+    <td><select name="greasySelect" id="greasySelect">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      </select>
+      <button>Update</button>
+      <button>Delete</button>
+      <button>Save for Later</button></td>
+    <td class="priceCell">$17.21</td>
+
+    </tbody>
+</table>
+
+<div class="totalRow"><strong>Total:</strong> <span class="totalCalc">$41.30</span></div>
+
+<div class="alert" role="alert" id="alertSelect"></div>
+
+<h4 class="neutral">Saved for Later</h4>
+<table class="hidden">
+  <caption>
+    Shopping Cart with  Select Lists
+    </caption>
+  <tr>
+    <th scope="col">Item</th>
+    <th scope="col">Quantity</th>
+    <th scope="col" class="priceCell">Price</th>
+   
+  </tr>
+  <tbody>
+  
+  </tbody>
+</table>
+<p>&nbsp;</p>
+
+
+</div>
+
+<span class="msg hidden" id="quantityUpdate">Quantity updated to: <span id="newQuantitySelect"></span>. </span>
+
+<span class="msg hidden" id="newTotal">Your new total is: .</span>
+
+<span class="msg hidden" id="newTotal">The item has been deleted. </span>
+
+<span class="msg hidden" id="newTotal">The item has been saved for later. </span>
+
+
+[[linksList? &labelId=`49`]]

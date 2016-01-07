@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Carousel Tab List Example</title>
+        <link rel="stylesheet" href="tabcarousel.css">
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="tabs.js"></script>
+        <script src="carouseltabs.js"></script>
+    </head>
+
+    <body>
+         <div class="container">
+            <p><a href="#">Focusable Content</a></p>
+            <h1>Mixed Content Carousel</h1>
+
+            <form name="updateprofile" id="updateprofile" method="post" action="#">
+                <ul class="tablist" role="tablist">
+                    <li class="active" role="tab" aria-selected="true" aria-controls="promo1" tabindex="0">Today only: 20% off</li>
+                    <li class="inactive" role="tab" aria-selected="false" aria-controls="promo2" tabindex="-1">Our fleet</li>
+                    <li class="inactive" role="tab" aria-selected="false" aria-controls="promo3" tabindex="-1">Safety Record</li>
+                </ul>
+                <div class="tabgrouping">
+                  <div id="promo1" class="tabpanel inactive" role="tabpanel" aria-hidden="true">
+                      <p>Sign up today and receive 20% off!</p>
+                    </div>
+
+                    <div id="promo2" class="tabpanel inactive" role="tabpanel" aria-hidden="true">
+                       <p>Our fleet is the largest in the world, with the most experienced pilots</p>
+
+                    </div>
+                    <div id="promo3" class="tabpanel inactive" role="tabpanel" aria-hidden="true">
+                    	<p>We have a perfect safety record, so feel at ease.  </p>
+                    </div>
+                    <p class="updating hidden" tabindex="-1"><span class="offscreen">Updating</span><img src="/assets/images/icons/spinner24.gif" width="24" height="24" role="presentation" alt=""></p>
+                    <p class="updated hidden" tabindex="-1">Your user profile has been updated.</p>
+                    <div id="liveUpdate" aria-live="assertive" aria-atomic="true"></div>
+                    <p class="save">&nbsp;</p>
+
+                    
+                </div>
+            </form>
+            <button id="play">Play</button>
+            <div id="carouselUpdate" aria-live="polite" class="offscreen"></div>
+        </div>
+    </body>
+</html>

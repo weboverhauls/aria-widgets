@@ -1,0 +1,23 @@
+.offscreen {position:absolute;left:-999px;top:-30px;height:2px;width:2px;overflow:hidden;}
+a img {border:none;}
+
+.carousel {margin:0 auto;width: 600px;}
+.imagegroup { text-align:center;overflow:hidden;}
+.imagegroup { width: 600px; overflow: none; height: 240px;}
+.imagegroup ul {margin:0 auto;padding:0;list-style:none;width: 2250px;}
+.imagegroup li {margin:0;padding:0;list-style:none; float: left; }
+
+
+.controls {text-align:center;clear: both;}
+.controls ul {margin:0;padding:0;list-style:none;}
+.controls li {display:inline-block;height:28px;width:28px;margin:0;padding:0;list-style:none;}
+.controls li a {height:26px;overflow:hidden;padding:0;margin:0;display:inline-block;}
+.controls li img {padding:5px 5px 5px 5px;display:inline-block;}
+.controls li img[role=button] {}
+
+.controls li img[role=button]:hover,
+.controls li img[role=button]:focus,
+.controls li img[role=button]:active,
+.controls li a:hover,
+.controls li a:focus,
+.controls li a:active {cursor:pointer;outline:1px solid #9fb4fa;background:#f7f9ff}

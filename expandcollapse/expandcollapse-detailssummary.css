@@ -1,0 +1,76 @@
+.detailsTag {
+	margin: 10px 0;
+}
+
+.summaryTag {
+	cursor: pointer;
+	display:block;
+    color: #254973;
+    border: 2px solid #eee;
+    border-radius: 5px;
+    padding: 3px 6px 3px 25px;
+}
+
+.detailsTag.notSupported .summaryTag {
+    background: #fff url("/assets/images/template/dequeUniversity/triangle-right-blue12.png") 6px center no-repeat !important;
+}
+
+.summaryTag::before {
+    padding-right: 0px;
+    display: inline;
+}
+
+.summaryTag h3::before,
+.summaryTag h4::before,
+.summaryTag h5::before {
+	content: "Expand ";
+}
+
+.detailsTag.notSupported .summaryTag.expanded {
+	background: #fff url("/assets/images/template/dequeUniversity/triangle-down-blue12.png") 6px center no-repeat !important;
+}
+
+details, summary {
+	display: block;
+}
+
+.detailsTag.notSupported .summaryTag.expanded h3::before,
+.detailsTag.notSupported .summaryTag.expanded h4::before,
+.detailsTag.notSupported .summaryTag.expanded h5::before {
+    content: "Collapse ";
+}
+
+.summaryTag:hover,
+.summaryTag:focus,
+.summaryTag:active,
+.summaryTag[role=button]:hover,
+.summaryTag[role=button]:focus,
+.summaryTag[role=button]:active {
+    border:none !important;
+    
+    outline: none !important;
+    border: 2px solid #8cc63f !important;
+    background-color: #fdf6e7 !important;
+}
+ 
+.summaryTag h2,
+.summaryTag h3, 
+.summaryTag h4, 
+.summaryTag h5,
+.summaryTag h6,
+#content .example .summaryTag h2, 
+#content .example .summaryTag h3,
+#content .example .summaryTag h4, 
+#content .example .summaryTag h5, 
+#content .example .summaryTag h6 {
+    margin:0 !important;
+    padding:0 !important; 
+    background: none;
+    color: #225a9b;
+    font-weight: normal;
+    border: none !important;
+    border-radius: none;
+    display: inline;
+    clear: none;
+    height: auto !important;
+}

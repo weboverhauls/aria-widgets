@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<script src="jquery.js"></script>
+<script src="carousel.js"></script>
+<title>Carousel</title>
+
+<style type="text/css">
+.offscreen {position:absolute;left:-999px;height:2px;width:2px;}
+a img {border:none;}
+.carousel { width: 750px;}
+.imagegroup { text-align:center;overflow:hidden;}
+.imagegroup ul {margin:0;padding:0;list-style:none;width: 2250px;}
+.controls ul {margin:0;padding:0;list-style:none;}
+.imagegroup li {margin:0;padding:0;list-style:none; float: left; }
+.controls li {margin:0;padding:0;list-style:none; display: inline; }
+.controls {text-align:center;padding:5px; clear: both;}
+.imagegroup { width: 750px; overflow: none; height: 300px;}
+</style>
+
+</head>
+
+<body>
+
+<div class="carousel">
+    <div class="imagegroup">
+        <ul>
+            <li><a href="transcendental.html"><img src="/assets/images/aria_javascript/carousel0.png" alt="Experience the transcendental beauty of space - Mars Commuter" width="750" height="300" /></a></li>
+            <li><a href="admit_it.html"><img src="/assets/images/aria_javascript/carousel1.png" alt="Admit it... you've always wanted to fly in one of these - Mars Commuter" width="750" height="300" /></a></li>
+            <li><a href="planetary_neighbor.html"><img  src="/assets/images/aria_javascript/carousel2.png" alt="Get up close and personal with your nearest planetary neighbor - Mars Commuter" width="750" height="300" /></a></li>
+            <li><a href="pictureyourself.html"><img src="/assets/images/aria_javascript/carousel3.png" alt="Picture yourself on mars for the holidays... Special holiday pricing. The kids will love it! Mars Commuter" width="750" height="300" /></a></li>
+        </ul>
+    </div>
+
+    <ul class="controls">
+        <li><img id="playPauseButton" role="button" tabindex="0" src="/assets/images/aria_javascript/pause.png" width="16" height="16" alt="pause promotional image carousel"></li>
+    </div>
+</div>
+<div class="offscreen" aria-live="polite"></div>
+</body>
+</html>
+

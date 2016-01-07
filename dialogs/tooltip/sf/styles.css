@@ -1,0 +1,32 @@
+:focus {
+  outline: 2px solid;
+}
+.help-link {
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #000;
+  text-decoration:none;
+}
+
+#help-tool-dialog, #account-help-dialog {
+  display: none;
+  padding: 10px;
+  position: absolute;
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 15px;
+
+}
+
+.offscreen {
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+#account-help-trigger {
+  text-decoration: none;
+}

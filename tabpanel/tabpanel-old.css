@@ -1,0 +1,78 @@
+.tabpanel {
+  margin: 20px;
+  padding: 0;
+ 
+}
+.tablist {
+  margin: 0 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.tab {
+
+  margin: .2em 1px 0 0;
+  padding: 10px;
+  height: 1em;
+  font-weight: bold;
+  background-color: #f0ecfd;
+  position:relative;
+  z-index:999;
+  border: 1px solid black;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px 5px 0 0;
+
+  float: left;
+  display: inline; /* IE float bug fix */
+}
+
+.panel {
+  clear: both;
+  display: block;
+  margin: 0 0 0 0;
+  position:relative;
+  top:-1px;
+  z-index:998;
+  padding: 10px;
+  width: 600px;
+  background:#fff;
+  border:1px solid #000;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+ul.controlList {
+  list-style-type: none;
+}
+
+li[aria-selected='true'] {
+  color: black;
+  background-color: #fff;
+  border-bottom: 1px solid white;
+}
+
+div[aria-hidden='true'] {
+   display: none;
+}
+
+.focus {
+  margin-top: 0;
+  height: 1.2em;
+}
+
+.accordian {
+  margin: 0;
+  float: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  width: 600px;
+}
+
+.hidden {
+  position: absolute;
+  left: -300em;
+  top: -30em;
+}

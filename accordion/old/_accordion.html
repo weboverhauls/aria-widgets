@@ -1,0 +1,95 @@
+
+<p>Interact with the example in the iframe below, or <a href="/assets/js/aria/accordion/index.html" target="_blank">open the example in a new window</a></p>
+<iframe src="/assets/js/aria/accordion/index.html" id="accordionFrame" title="Expandable accordion example"></iframe>
+<ul>
+  <li>Functionality</li>
+  <ul>
+    <li>Provides list of headers, which are NOT links but which contain submenus of links</li>
+    <li>Many headers at a time can be expanded to show their submenus; expanding a header has no effect on any other expanded header</li>
+    <li>Keyboard Functionality</li>
+    <ul>
+      <li>Not exactly like a classic ARIA menu (tab in, use cursor keys to navigate, next tab goes out)</li>
+      <li>This is intended to work as a navbar, but also as a list of links, so tab goes through the visible options</li>
+      <li>Cursor keys do work:</li>
+      <ul>
+        <li>On a menu header, down will expand the submenu if it&rsquo;s collapsed, or go down to the first item if it&rsquo;s expanded (up has no effect)</li>
+        <li>Left/right go between headers; when you get to beginning/end, left/right have no more effect</li>
+        <li>On menu items, up/down go through menu items (and again, tab also works); down on last item goes to next header</li>
+      </ul>
+      <li>A header&rsquo;s state can be toggled between expanded/collapsed</li>
+      <ul>
+        <li>If it&rsquo;s expanded: </li>
+        <ul>
+          <li>Esc will close it</li>
+        </ul>
+        <li>If it&rsquo;s not expanded:</li>
+        <ul>
+          <li>Enter, space, or down arrow will expand it</li>
+        </ul>
+      </ul>
+    </ul>
+    <li>Mouse Functionality</li>
+    <ul>
+      <li>Clicking headers toggles expand/collapsed state</li>
+      <li>Clicking items follows the link</li>
+    </ul>
+    <li>Mouse/Keyboard Interaction</li>
+    <ul>
+      <li>There is no particular conflict here, as nothing happens directly on focus/hover.</li>
+    </ul>
+  </ul>
+  <li>Implementation</li>
+  <ul>
+    <li>HTML</li>
+    <ul>
+      <li>Main element is HTML5 nav element with role=&rdquo;navigation&rdquo;</li>
+      <li>Inside the nav is a ul representing the top-level items (which are list items)</li>
+      <li>Each top menu list item contains: </li>
+      <ul>
+        <li>a span with the heading for the section</li>
+        <li>a ul that represents its submenu</li>
+        <ul>
+          <li>ul contains list items with anchor links in them</li>
+          <li>ARIA defines the relationship between the span and the submenu</li>
+          <ul>
+            <li>span has aria-controls pointing to the submenu&rsquo;s ID</li>
+            <li>submenu has aria-labelledby pointing to the span</li>
+          </ul>
+          <li>span has aria-popup=true attribute</li>
+          <li>span and submenu each have aria-expanded attribute dynamically set based on their expanded/collapsed state (starts off false)</li>
+        </ul>
+      </ul>
+    </ul>
+    <li>Javascript</li>
+    <ul>
+      <li>keydown handler on the topmenu li items, and the submenu li items, to handle cursor navigation, and esc/enter/space handling</li>
+      <ul>
+        <li>no code is needed for tab</li>
+      </ul>
+      <li>click on top menu to expand/collapse</li>
+      <ul>
+        <li>Toggles state from expanded to collapsed as needed</li>
+        <li>Keydown enter/space and click have the same effect, so no workaround is needed to handle screen readers here</li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2>Additional Resources</h2>
+<ul>
+  <li>Official ARIA documentation about accordion widgets:<a href="http://www.w3.org/TR/wai-aria-practices/#accordion"> http://www.w3.org/TR/wai-aria-practices/#accordion</a>
+  </li>
+  <li>Other working examples of accordions:
+    <ul>
+      <li>By the Open Ajax Alliance and the University of Illinois (same example): 
+        <ul>
+          <li><a href="http://www.oaa-accessibility.org/examplep/accordian1/">http://www.oaa-accessibility.org/examplep/accordian1/</a></li>
+          <li><a href="http://test.cita.illinois.edu/aria/tabpanel/tabpanel2.php">http://test.cita.illinois.edu/aria/tabpanel/tabpanel2.php</a></li>
+        </ul>
+      </li>
+      <li>By Hans Hillen: <a href="http://hanshillen.github.io/jqtest/#goto_accordion">http://hanshillen.github.io/jqtest/#goto_accordion</a></li>
+    </ul>
+  </li>
+  <li>WebAIM discussion thread about accordions: <a href="http://webaim.org/discussion/mail_thread?thread=6075">http://webaim.org/discussion/mail_thread?thread=6075</a></li>
+  <li>A Slideshare presentation by Sylvia Egger on accessible accordions: <a href="http://www.slideshare.net/sprungmarker/accessible-javascript-beispiel-akkordeon">http://www.slideshare.net/sprungmarker/accessible-javascript-beispiel-akkordeon</a></li>
+  <li>&quot;Not All ARIA Widgets Deserve role=&quot;application&quot; - by Jason Kiss on his &quot;Accessible Culture&quot; blog: <a href="http://accessibleculture.org/articles/2011/02/not-all-aria-widgets-deserve-role-application/">http://accessibleculture.org/articles/2011/02/not-all-aria-widgets-deserve-role-application/</a></li>
+</ul>

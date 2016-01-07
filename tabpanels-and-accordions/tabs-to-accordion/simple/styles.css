@@ -1,0 +1,96 @@
+/* ########## Neutralize the template styles ######## */
+
+nav.accordionTablist {
+	border:none !important;
+	border-radius:none !important; 
+	box-shadow:none !important;
+	font-size:14px !important;
+	border-radius:5px;
+	box-shadow: 0 0 4px #b2b2b2 !important;
+	width:330px;float:left;
+	background:#fff;
+	border:1px solid #375898;
+	border-radius:5px;
+	padding:5px;
+	}
+nav.accordionTablist li a {
+	background-image:none !important
+	}
+
+nav.accordionTablist li {
+	margin:0;padding:0;
+	list-style:none; 
+	}
+	
+nav.accordionTablist a {
+	text-decoration:none !important;	
+}
+
+nav.accordionTablist [role="tab"] {
+	display:block;
+	background:#375898 !important;
+	color:#fff !important;
+	padding:3px 6px 3px 25px  !important;
+	margin:0 !important;
+	border:1px solid #fff !important;
+	text-align:left !important;
+	font-size:14px !important;
+	}
+	
+nav.accordionTablist .active[role="tab"] {
+	background: #375898 url("/assets/images/template/dequeUniversity/triangle-down-white12.png") 6px center no-repeat !important;	
+}
+
+nav.accordionTablist [role="tab"] {
+	background: #375898 url("/assets/images/template/dequeUniversity/triangle-right-white12.png") 6px center no-repeat !important;	
+}
+
+nav.accordionTablist [role="tab"]:hover {
+	cursor:pointer;
+	color: #FFC !important;
+	background-color:#4b6fb6 !important;
+	}
+nav.accordionTablist [role="tab"]:focus,
+nav.accordionTablist [role="tab"]:active {
+	outline:#8cc63f 2px solid !important;
+	background-color: #00274d !important;
+}
+nav.accordionTablist [role="tabpanel"] {
+	display:none;
+	}
+nav.accordionTablist [role="tabpanel"][aria-hidden="false"] {
+	display:block;
+	}
+nav.accordionTablist [role="tabpanel"] ul {
+	width:326px;
+	margin:0 auto 0 auto;
+	padding:0;
+	list-style:none;
+	}
+nav.accordionTablist [role="tabpanel"] li {
+	background:#fff;
+	color:#375898;
+	}
+nav.accordionTablist [role="tabpanel"] li a {
+	display:block;
+	padding:3px 5px 3px 20px;
+	text-decoration:none;
+	color:#375898;
+	text-decoration:underline;
+	}
+nav.accordionTablist [role="tabpanel"] li.last a {
+	border-bottom:none;
+	}
+
+nav.accordionTablist div[role="tabpanel"] li a:hover {
+	cursor:pointer;
+	background:#ffc !important;
+	border:none !important;
+	outline:#8cc63f 1px solid;
+	}
+nav.accordionTablist div[role="tabpanel"] li.self a {
+	background:#FFC;color:#990000;
+}
+nav.accordionTablist div[role="tabpanel"]  p {
+	margin:0 23px;
+	}

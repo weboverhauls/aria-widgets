@@ -1,0 +1,88 @@
+.tabWidgetContainer {
+	padding: 20px;
+	background-color: #eee;
+	border-radius: 10px;
+	border: 1px solid #ccc;
+}
+.tablist {
+	list-type:none;
+	margin: 0 0 0 20px;
+	padding: 0;
+}
+.tablist li {
+	float: left;
+	position: relative;
+	top: 1px;
+	margin: 0 5px 0 0;
+	padding: 6px 9px 3px 9px;
+	list-style-type: none;
+	background: #fff;
+	border: 1px solid #d9d9d9;
+	border-radius: 10px 10px 0 0;
+	border-bottom: none;
+}
+.tablist li:hover {
+	cursor:pointer;
+}
+.tablist li:focus {
+	outline: 2px solid #8cc63f;
+	outline-offset: 2px;
+}
+.tablist li.active {
+	position: relative;
+	top: 1px;
+	padding: 7px 9px 4px 9px;
+	font-weight: bold;
+}
+.tabgrouping {
+	z-index: 99;
+	clear: both;
+	background: #fff;
+	padding: 30px;
+	border: 1px solid #CCC;
+	border-radius: 10px;
+	box-shadow: #e8e8e8 0 0px 3px;
+}
+.tabpanel.inactive {
+	display: none;
+}
+.tabpanel label.text {
+	clear: both;
+	width: 160px;
+	float: left;
+	text-align: right;
+	padding: 0 2px 0 0;
+}
+.tabpanel input[type='text'] {
+	width: 200px;
+}
+.tabpanel input[type='text'].long {
+	width: 300px;
+}
+.tabpanel input[type='text'].short {
+	width: 100px;
+}
+.tabpanel fieldset {
+	border-radius: 10px;
+	border: 1px solid #ccc;
+}
+.save {
+	text-align: center;
+	margin: 30px auto 5px auto;
+}
+.updating {
+	display: none;
+	text-align: center;
+}
+.updated {
+	display: none;
+	text-align: center;
+	margin: 0 auto;
+	width: 50%;
+	padding: 10px;
+	background: #fef6d6;
+	color: #903;
+	font-weight: bold;
+	border: 2px solid #903;
+	border-radius: 10px;
+}

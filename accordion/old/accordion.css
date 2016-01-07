@@ -1,0 +1,90 @@
+/* ########## Neutralize the template styles ######## */
+
+nav.accordion {
+	border:none !important;
+	border-radius:none !important; 
+	box-shadow:none !important;
+	font-size:14px !important;
+	border:1px solid #375898 !important;
+	}
+nav.accordion li a {
+	background-image:none !important
+	}
+
+/* ########### Styles for the accordion ######### */
+
+.accordion {
+	width:330px;float:right;
+	background:#fff;
+	border:1px solid #375898;
+	border-radius:5px;
+	padding:5px;
+	}
+nav.accordion li {
+	margin:0;padding:0;
+	list-style:none; 
+	}
+	
+nav.accordion a {
+	text-decoration:none !important;	
+}
+
+.accordion *[role="tab"] {
+	display:block;
+	background:#375898 !important;
+	color:#fff !important;
+	padding:3px 6px !important;
+	margin:0 !important;border:
+	1px solid #fff !important;
+	text-align:left !important;
+	font-size:14px !important;
+	}
+.accordion *[role="tab"]:hover {
+	cursor:pointer;
+	color: #FFC !important;
+	background:#4b6fb6 !important;
+	}
+.accordion *[role="tab"]:focus,
+.accordion *[role="tab"]:active {
+	outline:#8cc63f 2px solid !important;
+	background: #00274d !important;
+}
+.accordion *[role="tabpanel"] {
+	display:none;
+	}
+.accordion *[role="tabpanel"][aria-hidden="false"] {
+	display:block;
+	}
+nav.accordion *[role="tabpanel"] ul {
+	width:326px;
+	margin:0 auto 0 auto;
+	padding:0;
+	list-style:none;
+	}
+.accordion *[role="tabpanel"] li {
+	background:#fff;
+	color:#375898;
+	}
+nav.accordion *[role="tabpanel"] li a {
+	display:block;
+	padding:3px 5px 3px 20px;
+	text-decoration:none;
+	color:#375898;
+	text-decoration:underline;
+	}
+.accordion *[role="tabpanel"] li.last a {
+	border-bottom:none;
+	}
+
+.accordion div[role="tabpanel"] li a:hover {
+	cursor:pointer;
+	background:#ffc !important;
+	border:none !important;
+	outline:#8cc63f 1px solid;
+	}
+.accordion div[role="tabpanel"] li.self a {
+	background:#FFC;color:#990000;
+}
+.accordion div[role="tabpanel"]  p {
+	margin:0 23px;
+	}

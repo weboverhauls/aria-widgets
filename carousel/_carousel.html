@@ -1,0 +1,64 @@
+<p>Interact with the example in the iframe below, or <a href="/assets/js/aria/carousel/index.html" target="_blank">open the example in a new window</a></p>
+<iframe src="/assets/js/aria/carousel/index.html" id="carouselFrame" title="Carousel Example"></iframe>
+
+<ul><li>Functionality</li>
+  <ul><li>Provide a banner-sized image that rotates through a dynamic number of options</li><li>Beneath the banner: </li>
+    <ul><li>a play/pause button that will show the action that will happen if you activate it</li><li>A button for each image, highlighted if that image is the one being shown</li>
+    </ul><li>Mouse functionality</li>
+    <ul><li>Clicking on the banner goes to the page associated with the currently shown image</li><li>Clicking the play/pause button starts/stops the carousel animation</li><li>Clicking a numbered image button pauses the carousel and advances it to that image</li>
+    </ul><li>Keyboard functionality</li>
+    <ul><li>The carousel itself is ignored completely</li><li>Controls are tabbed through</li><li>Space or enter on play/pause control activates it, as a click</li><li>Keyboard focus on a numbered image button pauses the carousel and advances it to that image (that is, acts like a mouse click), and also shows the URL in the browser&rsquo;s status bar</li><li>Space or enter on a numbered image button goes to that page (like a click on the carousel image)</li>
+    </ul>
+  </ul><li>Implementation</li>
+  <ul><li>HTML</li>
+    <ul><li>Carousel itself is in a div with aria-hidden=true and role=presentation</li>
+      <ul><li>This is an appropriate role, because all the non-decorative content on the image is contained elsewhere on the page, and this is just a visual elaboration</li><li>Inside the carousel is a ul, with listitems that each contain an anchor link containing an img</li>
+        <ul><li>Tabindex on the links is set to -1 so they will be ignored by keyboard users</li>
+          <ul><li>Why do we ignore these links? Because for animation purposes, the DOM order is constantly shifting, and it makes a mess out of keyboard navigation -- if they were in tab order, it would take a variable number of tabs to get through the carousel depending on how quickly you tabbed, and some images might be tabbed over more than once or not at all.</li>
+          </ul><li>Img has appropriate alt text</li>
+        </ul>
+      </ul><li>Below the carousel is a ul containing the controls, each control in its own listitem</li>
+      <ul><li>The play/pause button is an img with role=button, tabindex=0, and alt text describing its current function (&ldquo;play image carousel&rdquo; or &ldquo;pause image carousel&rdquo;)</li><li>The numbered buttons are dynamically injected via Javascript</li>
+        <ul><li>They contain an anchor link to the same URL as the associated carousel image</li><li>Inside of which is an image (the numbered round dot image) whose alt text is the same alt text as the carousel image</li><li>The image&rsquo;s src is updated to black/grey versions to reflect its current highlight status</li>
+        </ul>
+      </ul><li>An ARIA live div</li>
+      <ul><li>displayed offscreen, so not visible</li><li>aria-live=polite, for informational status changes</li>
+      </ul>
+    </ul><li>Javascript</li>
+    <ul><li>On page load:</li>
+      <ul><li>build the control row</li>
+        <ul><li>Iterate through the images in the carousel, creating the list items, anchor links, and images for the control row</li><li>attach handlers for focus, mousedown, keydown, and click events to the newly-created links</li>
+        </ul><li>Attach certain ARIA attributes</li>
+        <ul><li>Add aria-hidden=true and role=presentation to the carousel image div</li><li>Add tabindex -1 to the anchor links in the carousel div</li><li>Why are these dynamically added instead of in the source like other ARIA elements? &nbsp;</li>
+          <ul><li>Because they should only be there if the Javascript runs. </li><li>If the JS does not run, the control row is not created, and it&rsquo;s inappropriate to block off the carousel</li><li>It&rsquo;s not realistic to make every page function without Javascript enabled, but if the static page would be accessible without Javascript (as the carousel would -- it&rsquo;s just a list of links with image content), it makes sense to preserve that non-Javascript functionality</li>
+          </ul>
+        </ul><li>Trigger the play carousel action (which has multiple effects; see below)</li><li>Add keydown handler to play/pause button that generates a click event on enter/space</li>
+      </ul><li>When play/pause is clicked, either play carousel or pause carousel is triggered</li>
+      <ul><li>Play carousel:</li>
+        <ul><li>Creates a timer that animates the carousel every n seconds</li><li>Makes the play/pause button look like pause, and have appropriate alt text</li><li>Binds the &ldquo;pause carousel&rdquo; action to the click event</li><li>Puts the text &ldquo;carousel playing&rdquo; in the live region, so users who cannot see the carousel animating will know that it is</li>
+        </ul><li>Pause carousel:</li>
+        <ul><li>Removes the previously set timer</li><li>Makes the play/pause button look like play and have appropriate alt text</li><li>Binds the &ldquo;play carousel action&rdquo; to the click event</li><li>Puts the text &ldquo;carousel paused&rdquo; in the live region</li>
+        </ul>
+      </ul><li>Carousel animation</li>
+      <ul><li>Takes in parameters of how many seconds the slide-in animation should take, and how many times it should repeat (default for normal animation is .5 seconds and once)</li><li>Updates the circle images to ensure the correct one is highlighted (makes previously black circle gray again, makes currently selected image&rsquo;s circle black)</li><li>Performs the slide in animation</li>
+        <ul><li>The images are really just stacked side-by-side in a long row whose viewport is clipped to the size of a single image</li><li>Slide that row left the width of one image, by using jQuery animate function to assign a negative left margin</li><li>Snap the row&rsquo;s left margin back to 0 at the same time as we take the leftmost image and move it to the end of the image list</li>
+        </ul>
+      </ul><li>Control row functionality</li>
+      <ul><li>Focus handler, called when keyboard focus is given to a circle</li>
+        <ul><li>Trigger the pause carousel functionality (shown above)</li><li>See how many slides ahead the focused circle&rsquo;s image is from what&rsquo;s currently displayed; trigger the animation to happen in 0 seconds, as many times as needed to highlight that image</li>
+          <ul><li>This method preserves the original image order</li>
+          </ul>
+        </ul><li>Keydown handler</li>
+        <ul><li>If it&rsquo;s space or enter that&rsquo;s pressed, navigate to the link&rsquo;s target URL</li>
+        </ul><li>Click handler</li>
+        <ul><li>Screen readers complicate the issue here</li>
+          <ul><li>Outside of application regions, screen readers will not trigger a keydown event on enter/space, they trigger a click instead</li><li>So need to be able to treat enter/space as such (and follow the link), while just focusing the proper image if the mouse is clicked</li><li>Solution: Check to see if the element has focus; if so, treat it as an enter/space key event, otherwise as mouse click</li><li>However: Before click is fired, mousedown gives focus to the event on a click. Need to override mousedown to prevent that from happening.</li>
+          </ul><li>If the element is focused, create a synthetic keydown event with enter key as the pressed key</li><li>If the element is not focused, perform the same action as the focus handler (pause, highlight, animate carousel to this slide)</li>
+        </ul><li>Mousedown handler</li>
+        <ul><li>Prevent focus; see click handler for motivation.</li>
+        </ul>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+>

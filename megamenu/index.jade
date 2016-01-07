@@ -1,0 +1,138 @@
+doctype html
+html
+  head
+    link(type='text/css', rel='stylesheet', href='styles.css')
+    link(href='http://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css')
+    link(href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet')
+    title Mega Menu
+  body
+    h1 Mega Menu
+    div(role="menubar")
+      ul(id="mega-menu" role="group")
+        li#home
+          a(href="#" role="menuitem" aria-setsize="5" aria-posinset="1")
+            i.fa.fa-home
+            |Home
+        li#about(class="has-drop")
+          a(href="#" role="menuitem" aria-haspopup="true" aria-setsize="5" aria-posinset="2")
+            i.fa.fa-users
+            |About
+            i.fa.fa-toggle-down.fa-1
+          div.droplet
+            div.col(role="group" aria-labelledby="about-head-1")
+              h2.col-head(id="about-head-1") Heading
+              ul
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="1") Item 1
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="2") Item 2
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="3") Item 3
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="4") Item 4
+            div.col(role="group" aria-labelledby="about-head-2")
+              h2.col-head(id="about-head-2") Heading
+              ul
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="1") Item 5
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="2") Item 6
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="3") Item 7
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="4") Item 8
+            div.col(role="group" aria-labelledby="about-head-3")
+              h2.col-head(id="about-head-3") Heading
+              ul
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="1") Item 9
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="2") Item 10
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="3") Item 11
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="4") Item 12
+        li#contact(class="has-drop")
+          a(href="#" role="menuitem" aria-haspopup="true" aria-setsize="5" aria-posinset="3")
+            i.fa.fa-smile-o
+            |Contact
+            i.fa.fa-toggle-down.fa-1
+          div.droplet
+            div.col(role="group" aria-labelledby="about-head-1")
+              h2.col-head(id="about-head-1") Heading
+              ul
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="1") Item 1
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="2") Item 2
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="3") Item 3
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="4") Item 4
+            div.col(role="group" aria-labelledby="about-head-2")
+              h2.col-head(id="about-head-2") Heading
+              ul
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="1") Item 5
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="2") Item 6
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="3") Item 7
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="4") Item 8
+            div.col(role="group" aria-labelledby="about-head-3")
+              h2.col-head(id="about-head-3") Heading
+              ul
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="1") Item 9
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="2") Item 10
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="3") Item 11
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="4") Item 12
+        li#faqs(class="has-drop")
+          a(href="#" role="menuitem" aria-haspopup="true" aria-setsize="5" aria-posinset="4")
+            i.fa.fa-question-circle
+            |FAQs
+            i.fa.fa-toggle-down.fa-1
+          div.droplet
+            div.col(role="group" aria-labelledby="about-head-1")
+              h2.col-head(id="about-head-1") Heading
+              ul
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="1") Item 1
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="2") Item 2
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="3") Item 3
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="4") Item 4
+            div.col(role="group" aria-labelledby="about-head-2")
+              h2.col-head(id="about-head-2") Heading
+              ul
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="1") Item 5
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="2") Item 6
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="3") Item 7
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="4") Item 8
+            div.col(role="group" aria-labelledby="about-head-3")
+              h2.col-head(id="about-head-3") Heading
+              ul
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="1") Item 9
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="2") Item 10
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="3") Item 11
+                li
+                  a(href="#" role="menuitem" aria-setsize="4" aria-posinset="4") Item 12
+        li#links
+          a(href="#" role="menuitem" aria-setsize="5" aria-posinset="5")
+            i.fa.fa-external-link
+            |Links
+    script(src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.1/jquery.js')
+    script(src='mega-menu.js')

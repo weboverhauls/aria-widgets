@@ -1,0 +1,107 @@
+<p>Interact with the example in the iframe below, or <a href="/assets/js/aria/radiocheckbox/index.html" target="_blank">open the example in a new window</a></p>
+<iframe src="/assets/js/aria/radiocheckbox/index.html" id="checkboxFrame" title="Checkbox and Radio Button Example"></iframe>
+
+<ul>
+  <li>Functionality</li>
+  <ul>
+    <li>The goal is to mimic native browser checkbox/radio button handling, by using custom images</li>
+    <li>Keyboard</li>
+    <ul>
+      <li>Checkbox</li>
+      <ul>
+        <li>Use tab to move between checkboxes</li>
+        <li>Use enter/space to switch a checkbox&rsquo;s state; this has no effect on other checkboxes</li>
+        <li>Cursor keys do nothing</li>
+      </ul>
+      <li>Radio button</li>
+      <ul>
+        <li>Tab goes to the currently selected radio button (or first if none are selected); next tab goes to next element after radio buttons</li>
+        <li>Left/right arrow move between radio buttons, selecting the currently focused one</li>
+      </ul>
+    </ul>
+    <li>Mouse</li>
+    <ul>
+      <li>Clicking checkbox or radio button has the same effect as pressing enter/space on a checkbox, or focusing a radio button; it is selected.</li>
+    </ul>
+  </ul>
+  <li>Implementation</li>
+  <ul>
+    <li>HTML</li>
+    <ul>
+      <li>Radiobutton</li>
+      <ul>
+        <li>Use legend/fieldset as per normal recommendations</li>
+        <li>Around the &ldquo;radio buttons&rdquo;, a div with role=radiogroup</li>
+        <li>On each radiobutton img:</li>
+        <ul>
+          <li>role=radio</li>
+          <li>aria-label with the value (needed in this case because the &ldquo;value&rdquo; is the color of the checkbox and there&rsquo;s no separate label)</li>
+          <li>aria-checked true or false</li>
+          <li>tabindex=0</li>
+          <li>alt text the same as aria-label</li>
+          <li>NOTE: JAWS reads these incorrectly as &ldquo;not checked&rdquo; regardless of their value</li>
+        </ul>
+      </ul>
+      <li>Checkbox</li>
+      <ul>
+        <li>Fieldset/legend as per normal</li>
+        <li>div role=application around the &ldquo;checkboxes&rdquo;</li>
+        <li>Each checkbox img has:</li>
+        <ul>
+          <li>role=checkbox</li>
+          <li>aria-label with the value of the label (again, colors in this instance)</li>
+          <li>aria-checked true or false</li>
+          <li>tabindex=0</li>
+          <li>alt text the same as the aria label</li>
+        </ul>
+      </ul>
+    </ul>
+    <li>Javascript</li>
+    <ul>
+      <li>For radio button:</li>
+      <ul>
+        <li>SetRadio function</li>
+        <ul>
+          <li>Unchecks all the currently checked sibling imgs (aria-checked=false)</li>
+          <li>Checks itself (aria-checked=true)</li>
+          <li>Changes tabindex of other siblings to -1</li>
+          <li>Changes its tabindex to 0</li>
+          <li>Sets focus on itself</li>
+          <li>Changes images to checked/unchedked variants in line with aria-checked</li>
+        </ul>
+        <li>Keydown handler for cursor keys and enter/space key</li>
+        <ul>
+          <li>Cursor keys:</li>
+          <ul>
+            <li>For left/up, move to previous item, wrapping around to end if needed; then do Set Radio functionality on the newly focused image</li>
+            <li>For right/down, the same, except for the next one, wrapping to the beginning if needed</li>
+          </ul>
+          <li>Enter/space</li>
+          <ul>
+            <li>Set Radio on the currently focused element (should almost never have an effect, as cursor keys would normally do this automatically)</li>
+          </ul>
+        </ul>
+        <li>Click handler</li>
+        <ul>
+          <li>Calls Set Radio function on the currently clicked img</li>
+        </ul>
+      </ul>
+      <li>For checkboxes</li>
+      <ul>
+        <li>ToggleChecked function</li>
+        <ul>
+          <li>Switches aria-checked from true to false or vice versa</li>
+          <li>Switches its image from checked to unchecked or vice versa</li>
+        </ul>
+        <li>Keydown handler for enter/space</li>
+        <ul>
+          <li>ToggleChecked</li>
+        </ul>
+        <li>Click handler</li>
+        <ul>
+          <li>ToggleChecked</li>
+        </ul>
+      </ul>
+    </ul>
+  </ul>
+</ul>

@@ -1,0 +1,275 @@
+<h2>Creating &quot;Real&quot; Checkboxes</h2>
+<p>If you have a choice between using regular checkboxes and using role=&quot;checkbox&quot; to turn some other tag (like <code>&lt;div&gt;</code> or <code>&lt;span&gt;</code> or <code>&lt;img&gt;</code>) into a checkbox, choose a regular checkbox, unless there is no other way to accomplish what you want to accomplish, or unless you have some other truly compelling reason. Real checkboxes are already  universally supported in browsers of all kinds, and you don't have to do any fancy scripting to make them act like checkboxes. </p>
+<p>In short: real checkboxes are easier to set up, and they're guaranteed to work (assuming that you provide appropriate labels and don't ruin the default behavior with faulty scripts). Custom checkboxes can be just as functional reliable, but custom checkboxes require more planning, programming, and testing. </p>
+<div class="example">
+<h3 class="good">A Standard Checkbox</h3>
+
+<div>
+<input type="checkbox" name="savePrefs" id="savePrefs"> <label for="savePrefs">Save my preferences</label>
+</div>
+<p><code class="block">&lt;input type=&quot;checkbox&quot; name=&quot;savePrefs&quot; id=&quot;savePrefs&quot;&gt; <br>  &lt;label for=&quot;savePrefs&quot;&gt;Save my preferences&lt;/label&gt;</code></p>
+</div>
+
+<div class="example">
+<h3 class="good">Grouped Standard checkboxes</h3>
+<p>Groups of checkboxes should usually be surrounded by a <code>&lt;fieldset&gt;</code> with a corresponding <code>&lt;legend&gt;</code>, so that screen readers can read the group label (the <code>&lt;legend&gt;</code>) as well as the <code>&lt;label&gt;</code> tags for the individual checkboxes.</p>
+
+
+<fieldset>
+<legend>Choose your frozen yogurt toppings:</legend>
+<div>
+  <input type="checkbox" name="strawberries" id="strawberries">
+  <label for="strawberries">strawberries</label>
+  </div>
+  <div>
+  <input type="checkbox" name="cherries" id="cherries">
+  <label for="cherries">cherries</label>
+  </div>
+  <div>
+  <input type="checkbox" name="almonds" id="almonds">
+  <label for="almonds">almonds</label>
+  </div>
+  <div>
+  <input type="checkbox" name="crushed-peanuts" id="crushed-peanuts">
+  <label for="crushed-peanuts">crushed peanuts</label>
+  </div>
+</fieldset>
+<pre>&lt;fieldset&gt;
+   &lt;legend&gt;Choose your frozen yogurt toppings:&lt;/legend&gt;
+   &lt;div&gt;
+      &lt;input type=&quot;checkbox&quot; name=&quot;strawberries&quot; id=&quot;strawberries&quot;&gt;
+      &lt;label for=&quot;strawberries&quot;&gt;strawberries&lt;/label&gt;
+   &lt;/div&gt;
+   &lt;div&gt;
+      &lt;input type=&quot;checkbox&quot; name=&quot;cherries&quot; id=&quot;cherries&quot;&gt;
+      &lt;label for=&quot;cherries&quot;&gt;cherries&lt;/label&gt;
+   &lt;/div&gt;
+   &lt;div&gt;
+      &lt;input type=&quot;checkbox&quot; name=&quot;almonds&quot; id=&quot;almonds&quot;&gt;
+      &lt;label for=&quot;almonds&quot;&gt;almonds&lt;/label&gt;
+   &lt;/div&gt;
+   &lt;div&gt;
+      &lt;input type=&quot;checkbox&quot; name=&quot;crushed-peanuts&quot; id=&quot;crushed-peanuts&quot;&gt;
+      &lt;label for=&quot;crushed-peanuts&quot;&gt;crushed peanuts&lt;/label&gt;
+   &lt;/div&gt;
+&lt;/fieldset&gt;</pre>
+</div>
+
+<h2>Creating ARIA Checkboxes</h2>
+<ol>
+  <li><strong>Add <code>role=&quot;checkbox&quot;</code> </strong>so that screen readers will recognize the object as a checkbox.</li>
+  <li><strong>Add a label: </strong>With ARIA checkboxes, you cannot use the normal labeling technique of <code>for</code> + <code>id</code> with the <code>&lt;label&gt;</code> tag. You must use either <code>aria-labelledby</code>, <code>aria-label</code>, or the <code>title</code> attribute.  
+  <ul>
+    <li><strong><code>aria-labelledby</code></strong> allows you to create a visible label and link it to the checkbox</li>
+    <li><strong><code>aria-label</code></strong> creates an invisible label only for screen readers</li>
+    <li><strong><code>title</code></strong> creates an invisible label plus a tooltip on hover, but not on focus, making the label fully accessible to screen reader users, somewhat accessible to sighted mouse users, and not at all accessible to sighted keyboard users.</li>
+  </ul></li>
+  <li><strong>Add an initial state: </strong>declare the initiate state of the checkbox with either <code>aria-checked=&quot;true&quot;</code> or <code>aria-checked=&quot;false&quot;</code> (or you can leave off the <code>aria-checked</code> attribute, which is the same as <code>aria-checked=&quot;false&quot;</code>).</li>
+  <li><strong>Add <code>tabindex=&quot;0&quot;</code></strong> to allow keyboard accessibility.</li>
+</ol>
+
+<div class="example">
+  <h3 class="good">ARIA Checkbox with <code>aria-labelledby</code></h3>
+  <div>
+  <img role="checkbox" alt="Save my settings" aria-checked="true" 
+aria-labelledby="saveLabel" tabindex="0" src="/assets/images/aria_javascript/checkbox-oversize-checked.png" /> <label id="saveLabel" >Save my settings</label>
+</div>
+
+<p><code class="block"> &lt;img role=&quot;checkbox&quot; alt=&quot;Save my settings&quot; aria-checked=&quot;true&quot; <br>
+  <span class="highlight">aria-labelledby=&quot;saveLabel&quot;</span> tabindex=&quot;0&quot;  src=&quot;checkbox-oversize-checked.png&quot; /&gt; &lt;label id=&quot;saveLabel&quot;&gt;Save my settings&lt;/label&gt;</code></p>
+<p>Note that if you have both  <code>aria-labelledby</code> and an <code>alt</code> attribute, modern screen readers will read only the label text. </p>
+<p>Also note that the label is not clickable. You can't click on the text referenced by <code>aria-describedby</code> to send the focus to the checkbox in the same way that you could if you were to use a regular <code>&lt;label&gt;</code> tag.  That's one of the drawbacks of using <code>aria-describedby</code>, and  an argument against using custom ARIA form fields in general.</p>
+</div>
+
+<div class="example">
+<h3 class="good">ARIA Checkboxes with <code>aria-label</code></h3>
+<p>Under somewhat rare circumstances, it may make sense to make the label invisible, and only available to screen readers if the purpose of the checkbox is readily apparent in the visual appearance of the checkbox itself. </p>
+<p>You do have to be very careful when making labels invisible. You might accidentally create accessibility barriers for people who are color-blind or who have low vision. In the example below, we're referencing colors, which is problematic for anyone with a visual impairment, but may be allowable if the choice of colors is merely cosmetic and not critical to the meaning of the content. For example, a web application might offer the user some choices of colors for the interface. A blind person will ignore these choices, as they are not relevant. A person with low vision or colorblindness can still choose the colors that work best for them, even if they can't easily distinguish some of the colors. As long as the end result represents personal preferences and does not change the meaning of content, this shouldn't be a problem. </p>
+<p>But don't gloss over these types of questions. Will any meaning be lost if users with low vision or colorblindness can't see the labels? If yes, then ensure the labels are visible. If no, then invisible labels may be acceptable. </p>
+
+<fieldset class="inline noborder whitebg">
+   <legend id="checkboxes1" tabindex="0">Choose one or more colors:</legend>
+   <div role="application">
+    <img role="checkbox" aria-label="Black" alt="Black" aria-checked="true" tabindex="0" 
+         src="/assets/images/aria_javascript/checkbox_black_checked.png" width="16" height="16" /> 
+    <img role="checkbox" aria-label="Dark Blue" alt="Dark Blue" aria-checked="false" tabindex="0" 
+         src="/assets/images/aria_javascript/checkbox_darkblue_unchecked.png"  width="16" height="16" />
+    <img role="checkbox" aria-label="Light Blue" alt="Light Blue" aria-checked="false" tabindex="0" 
+         src="/assets/images/aria_javascript/checkbox_lightblue_unchecked.png" width="16" height="16" />
+    <img role="checkbox" aria-label="Green" alt="Green" aria-checked="false" tabindex="0" 
+         src="/assets/images/aria_javascript/checkbox_green_unchecked.png" width="16" height="16" />
+    <img role="checkbox" aria-label="Magenta" alt="Magenta" aria-checked="false" tabindex="0" 
+         src="/assets/images/aria_javascript/checkbox_magenta_unchecked.png" width="16" height="16" />
+    <img role="checkbox" aria-label="Orange"  alt="Orange" aria-checked="false" tabindex="0" 
+         src="/assets/images/aria_javascript/checkbox_orange_unchecked.png" width="16" height="16" />
+    <img role="checkbox" aria-label="Red" alt="Red" aria-checked="false" tabindex="0" 
+         src="/assets/images/aria_javascript/checkbox_red_unchecked.png" width="16" height="16" />
+    <img role="checkbox" aria-label="Yellow" alt="Yellow" aria-checked="false" tabindex="0" 
+         src="/assets/images/aria_javascript/checkbox_yellow_unchecked.png" width="16" height="16" />
+   </div>
+</fieldset>
+<pre><code>&lt;fieldset class=&quot;inline noborder&quot;&gt;
+   &lt;legend id=&quot;checkboxes1&quot; tabindex=&quot;0&quot;&gt;Choose one or more colors:&lt;/legend&gt;
+   &lt;div role=&quot;application&quot;&gt;
+   &lt;img role=&quot;checkbox&quot; <span class="highlight">aria-label=&quot;Black&quot;</span> alt=&quot;Black&quot; 
+      aria-checked=&quot;true&quot; tabindex=&quot;0&quot; 
+      src=&quot;black_checked.png&quot; width=&quot;16&quot; height=&quot;16&quot; /&gt; 
+   &lt;img role=&quot;checkbox&quot; <span class="highlight">aria-label=&quot;Dark Blue&quot;</span> alt=&quot;Dark Blue&quot; 
+      aria-checked=&quot;false&quot; tabindex=&quot;0&quot; 
+      src=&quot;darkblue_unchecked.png&quot;  width=&quot;16&quot; height=&quot;16&quot; /&gt;
+   &lt;img role=&quot;checkbox&quot; <span class="highlight">aria-label=&quot;Light Blue&quot;</span> alt=&quot;Light Blue&quot; 
+      aria-checked=&quot;false&quot; tabindex=&quot;0&quot; 
+      src=&quot;lightblue_unchecked.png&quot; width=&quot;16&quot; height=&quot;16&quot; /&gt;
+   &lt;img role=&quot;checkbox&quot; <span class="highlight">aria-label=&quot;Green&quot;</span> alt=&quot;Green&quot; 
+      aria-checked=&quot;false&quot; tabindex=&quot;0&quot; 
+      src=&quot;green_unchecked.png&quot; width=&quot;16&quot; height=&quot;16&quot; /&gt;
+   &lt;img role=&quot;checkbox&quot; <span class="highlight">aria-label=&quot;Magenta&quot;</span> alt=&quot;Magenta&quot; 
+      aria-checked=&quot;false&quot; tabindex=&quot;0&quot; 
+      src=&quot;magenta_unchecked.png&quot; width=&quot;16&quot; height=&quot;16&quot; /&gt;
+   &lt;img role=&quot;checkbox&quot; <span class="highlight">aria-label=&quot;Orange&quot;</span>  alt=&quot;Orange&quot; 
+      aria-checked=&quot;false&quot; tabindex=&quot;0&quot; 
+      src=&quot;orange_unchecked.png&quot; width=&quot;16&quot; height=&quot;16&quot; /&gt;
+   &lt;img role=&quot;checkbox&quot; <span class="highlight">aria-label=&quot;Red&quot;</span> alt=&quot;Red&quot; 
+      aria-checked=&quot;false&quot; tabindex=&quot;0&quot; 
+      src=&quot;red_unchecked.png&quot; width=&quot;16&quot; height=&quot;16&quot; /&gt;
+   &lt;img role=&quot;checkbox&quot; <span class="highlight">aria-label=&quot;Yellow&quot;</span> alt=&quot;Yellow&quot; 
+      aria-checked=&quot;false&quot; tabindex=&quot;0&quot; 
+      src=&quot;yellow_unchecked.png&quot; width=&quot;16&quot; height=&quot;16&quot; /&gt;
+   &lt;/div&gt;<br>&lt;/fieldset&gt;</code></pre>
+</div>
+<h3>Mimic Native Checkbox Functionality</h3>
+<p>You will need to use JavaScript to mimic the behavior of native checkboxes. Here are a few key features of normal checkbox functionality:</p>
+<ul>
+  <li><strong>All checkboxes work independently.</strong> Checking one box does not have an effect on the other checkboxes.
+    <ul>
+      <li><strong>Exception: Tri-state checkboxes</strong>. With tri-state checkboxes, selecting or de-selecting boxes within a group may cause the parent checkbox to be either selected (if all child checkboxes are checked), unselected (if none of the child checkboxes are checked), or partially selected (if some child checkboxes are checked and others are unchecked).</li>
+    </ul>
+  </li>
+  <li><strong>Users can click with the mouse</strong> to select or de-select the checkboxes.</li>
+  <li><strong>Users can use the enter key</strong> to select or de-select the checkboxes.</li>
+  <li><strong>Users can use the space bar</strong> to select or de-select the checkboxes.</li>
+  <li><strong>Users can tab through groups of checkboxes sequentially.</strong> They do not need to use the arrow keys; in fact the arrow keys do not apply to checkboxes.</li>
+</ul>
+<div class="example"> 
+<h3 class="good">JavaScript Code for Checkboxes (and Radio Buttons)</h3>
+<pre><code>/* Note: this source code applies to both the 
+   checkbox and radio button examples.
+   If you need only one or the other, you can 
+   delete the parts you don't need */
+   
+   var setCheckbox = function(t) {
+    toggleChecked(t);
+    t.focus();
+}
+
+var setRadio = function(t) {
+    var currentlyChecked = t.parent().children("img[aria-checked='true']")[0];
+    if (t.is(currentlyChecked)) { return;}
+    
+    toggleChecked(t);
+    toggleChecked($(currentlyChecked));    
+    t.siblings("img").attr("tabindex", "-1");
+    t.attr("tabindex", "0");
+    t.focus();
+}
+
+var toggleChecked = function(t) {
+    t.attr("aria-checked", t.attr("aria-checked") === "true" ? "false" : "true");
+    t.attr("src", toggleSrc(t.attr("src")));
+}
+
+var toggleSrc = function(srcUrl) {
+    if (srcUrl.indexOf("unchecked") === -1) {
+        return srcUrl.replace("checked", "unchecked");
+    } else {
+        return srcUrl.replace("unchecked", "checked");
+    }
+}
+
+var handleKeyCursor = function(t, key, handler) {
+    if (key === 37 || key === 38) { //left/up
+        var prevItem = t.prev("img");
+        if (prevItem.length > 0) {
+            handler(prevItem);
+        } else {
+            //go to the last one
+            var lastItem = t.siblings("img").last();
+            handler(lastItem);
+        }
+    } else if (key === 39 || key === 40) { //right/down
+        var nextItem = t.next("img");
+        if (nextItem.length > 0) {
+            handler(nextItem);
+        } else {
+            //go to the first one
+            var firstItem = t.siblings("img").first();
+            handler(firstItem);
+        }
+    }
+}
+
+var handleKeyEnter = function(t, key, handler) {
+    if (key === 13 || key === 32) { //enter/spacebar
+        handler(t);
+        preventDefault();
+    }
+}
+
+$(document).ready(function() {
+    $("img[role='radio']")
+        .keydown(function(event) {
+            var t = $(event.currentTarget);
+            handleKeyCursor(t, event.which, setRadio);
+            handleKeyEnter(t, event.which, setRadio);
+        })
+        .click(function(event) {
+            var t = $(event.currentTarget);
+            setRadio(t)
+        });
+    $("img[role='checkbox']")
+        .keydown(function(event) {
+            var t = $(event.currentTarget);
+            handleKeyEnter(t, event.which, setCheckbox);
+        })
+        .click(function(event) {
+            var t = $(event.currentTarget);
+            setCheckbox(t)
+        });
+});
+</code></pre>
+</div>
+<h3>Style the Checkboxes</h3>
+<p>You will need to have two visual states for the checkboxes: selected and de-selected. For tri-state checkboxes you will also need a visual state to represent a partially-selected option. If you are using images as your checkboxes, it is usually as simple as creating one version of the image with a checkmark and another version without a checkmark. </p>
+<p>The JavaScript will need toggle between the two images. You can make this relatively easy to script if you use a naming convention with &quot;checked&quot; and &quot;unchecked&quot; at the end of the file name. With a generic approach like this, you can use the same JavaScript on many instances of checkboxes on the same page or on the same web site.</p>
+<h2>Related External Resources</h2>
+<ul>
+  <li>The official W3C documentation on checkboxes: <a href="http://www.w3.org/TR/wai-aria/roles#checkbox">http://www.w3.org/TR/wai-aria/roles#checkbox</a></li>
+  <li>AOL DHTML style guide: <a href="http://access.aol.com/dhtml-style-guide-working-group/#checkbox">http://access.aol.com/dhtml-style-guide-working-group/#checkbox</a></li>
+  <li>Open AJAX Alliance/University of Illinois:
+    <ul>
+      <li>Example 1 (with images as checkboxes):
+        <ul>
+          <li><a href="http://www.oaa-accessibility.org/examplep/checkbox1/">http://www.oaa-accessibility.org/examplep/checkbox1/</a>
+          </li>
+          <li><a href="http://test.cita.illinois.edu/aria/checkbox/checkbox1.php">http://test.cita.illinois.edu/aria/checkbox/checkbox1.php</a></li>
+        </ul>
+      </li>
+      <li>Example 2 (checkbox group with tri-state checkbox, with images as checkboxes):      
+        <ul>
+          <li><a href="http://www.oaa-accessibility.org/examplep/checkbox2/">http://www.oaa-accessibility.org/examplep/checkbox2/</a></li>
+          <li><a href="http://test.cita.illinois.edu/aria/checkbox/checkbox2.php">http://test.cita.illinois.edu/aria/checkbox/checkbox2.php</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <ul>
+    <li>Example 3 (with background images as checkboxes):
+      <ul>
+        <li><a href="http://www.oaa-accessibility.org/examplep/checkbox3/">http://www.oaa-accessibility.org/examplep/checkbox3/</a></li>
+        <li><a href="http://test.cita.illinois.edu/aria/checkbox/checkbox3.php">http://test.cita.illinois.edu/aria/checkbox/checkbox3.php</a></li>
+      </ul>
+    </li>
+  </ul>
+  <li>Hans Hillen: <a href="http://hanshillen.github.io/jqtest/#goto_checkbox">http://hanshillen.github.io/jqtest/#goto_checkbox</a></li>
+</ul>
+

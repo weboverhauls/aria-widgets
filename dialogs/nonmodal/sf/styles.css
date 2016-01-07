@@ -1,0 +1,63 @@
+:focus {
+  outline: 2px solid;
+}
+label { width: 180px; display: inline-block;}
+#helper, .side-note {
+  font-style: italic;
+  color: #666;
+  font-size: 15px;
+  margin: 2px;
+}
+
+.fundage {
+  margin-bottom: 4px;
+}
+#dialog_container {
+  position: relative;
+}
+#bin {
+  display: none;
+  left: 450px;
+  padding: 10px;
+  position: absolute;
+  width: 450px;
+}
+.bin-active {
+  border: 4px dotted #f00;
+}
+.bin-inactive {
+  border: 2px dotted #f00;
+}
+
+#success-bin {
+  border: 4px dotted green;
+  display: none;
+}
+
+input[aria-invalid="true"],
+select[aria-invalid="true"] {
+  outline: 1px solid #f00;
+}
+
+.offscreener {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+}
+#bin h2, #success-bin h2 {
+  margin: 4px;
+  padding: 0px;
+}
+
+.error-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#error-head, #success-head {
+  font-size: 24px;
+  font-weight: bold;
+}

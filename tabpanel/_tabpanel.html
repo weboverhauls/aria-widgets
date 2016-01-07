@@ -1,0 +1,127 @@
+<p>Interact with the example in the iframe below, or <a href="/assets/js/aria/tabpanel/index.html" target="_blank">open the example in a new window</a></p>
+<iframe src="/assets/js/aria/tabpanel/index.html" id="tabFrame" title="Tab Panel Example"></iframe>
+
+<ul id="docs-internal-guid-4526e5f6-e4dd-624b-58f2-d81800a4a454">
+  <li>Functionality</li>
+  <ul>
+    <li>Provide a tabbed UI, where the user can switch between tabs to view different sets of content</li>
+    <li>There are two parts to the UI:</li>
+    <ul>
+      <li>The tab list, which shows the tab</li>
+      <li>The tab panels, which show the content associated with the tabs</li>
+    </ul>
+    <li>Within a tab panel, UI is normal for the page; the &ldquo;special&rdquo; UI is within the tab list</li>
+    <li>Keyboard</li>
+    <ul>
+      <li>Tab list presents only one tab stop, for the active tab</li>
+      <li>You can move between tabs with left/right, up/down, or ctrl+pgup/ctrl+pgdn</li>
+      <ul>
+        <li>Moving between tabs changes the active tab immediately</li>
+        <li>Reaching the end wraps around to the other end</li>
+      </ul>
+    </ul>
+    <li>Mouse</li>
+    <ul>
+      <li>Clicking on a tab activates the clicked-on tab</li>
+    </ul>
+  </ul>
+  <li>Implementation</li>
+  <ul>
+    <li>HTML</li>
+    <ul>
+      <li>Tab list is a ul, with listitems for each tab</li>
+      <ul>
+        <li>ul has role=tablist</li>
+        <li>list items</li>
+        <ul>
+          <li>have role=tab</li>
+          <li>have aria-controls= the id of the tabpanel tied to the tab</li>
+          <li>for the active tab</li>
+          <ul>
+            <li>aria-selected=true</li>
+            <li>tabindex=0</li>
+          </ul>
+          <li>for inactive tabs</li>
+          <ul>
+            <li>aria-selected=false</li>
+            <li>tabindex=-1</li>
+          </ul>
+        </ul>
+      </ul>
+      <li>Tab panels are divs within a grouping div</li>
+      <ul>
+        <li>No special markup for grouping div</li>
+        <li>Each tab panel</li>
+        <ul>
+          <li>has role=tabpanel</li>
+          <li>active tab</li>
+          <ul>
+            <li>has CSS class that makes it visible</li>
+            <li>aria-hidden=false</li>
+          </ul>
+          <li>inactive tabs</li>
+          <ul>
+            <li>Not visible via CSS</li>
+            <li>aria-hidden=true</li>
+          </ul>
+        </ul>
+      </ul>
+    </ul>
+    <li>Javascript</li>
+    <ul>
+      <li>Initialize event handlers</li>
+      <ul>
+        <li>On mouse click, focus clicked tab</li>
+        <li>On keydown</li>
+        <ul>
+          <li>If left, up, ctrl-pageup, focus previous tab or last if no previous</li>
+          <li>If right, down, ctrl-pgdn, focus next tab or first if no next</li>
+        </ul>
+      </ul>
+      <li>Focus tab logic</li>
+      <ul>
+        <li>Find the current active tab and inactivate it</li>
+        <ul>
+          <li>For the tab in the tab list</li>
+          <ul>
+            <li>set CSS classes appropriately</li>
+            <li>set aria-selected=false</li>
+            <li>set tabindex=-1</li>
+          </ul>
+          <li>For the tabpanel</li>
+          <ul>
+            <li>Set CSS appropriately</li>
+            <li>Set aria-hidden=true</li>
+          </ul>
+        </ul>
+        <li>Find the new tab and activate it</li>
+        <ul>
+          <li>For the tab in the tab list</li>
+          <ul>
+            <li>set CSS classes appropriately</li>
+            <li>set aria-selected=true</li>
+            <li>set tabindex=0</li>
+          </ul>
+          <li>For the tabpanel</li>
+          <ul>
+            <li>Set CSS appropriately</li>
+            <li>Set aria-hidden=false</li>
+          </ul>
+        </ul>
+        <li dir="ltr">Focus on the new tab header</li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2>Additional Resources</h2>
+<ul>
+  <li> Official ARIA  documentation for tab panels: <a href="http://www.w3.org/TR/wai-aria-practices/#tabpanel">http://www.w3.org/TR/wai-aria-practices/#tabpanel</a>
+  </li>
+  <li>DHTML style guide recommendations for tab panels: <a href="http://access.aol.com/dhtml-style-guide-working-group/#tabpanel">http://access.aol.com/dhtml-style-guide-working-group/#tabpanel</a></li>
+  <li>Other  working examples of tab panels:
+    <ul>
+      <li><a href="http://oaa-accessibility.org/example/34/">http://oaa-accessibility.org/example/34/</a></li>
+      <li><a href="http://accessibleculture.org/articles/2010/08/aria-tabs/">http://accessibleculture.org/articles/2010/08/aria-tabs/</a></li>
+    </ul>
+  </li>
+</ul>
